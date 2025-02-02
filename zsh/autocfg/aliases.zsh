@@ -30,7 +30,7 @@ alias tmxa="tmux -CC attach -t main"
 alias cat="bat"
 
 # Edit files
-alias as="nvim ~/.dotfiles/system/aliases.sh" # <this file>
+alias as="nvim ~/.dotfiles/zsh/autocfg/aliases.zsh" # <this file>
 alias v='nvim $(fzf --preview="bat --color=always {}")'
 
 # Move to directories
