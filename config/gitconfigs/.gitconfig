@@ -34,7 +34,7 @@
     lg = log --oneline --graph --decorate --all
     pushall = !git remote | xargs -L1 git push --all
     supdate = !git submodule update --remote --merge
-    dots = !git --git-dir=$HOME/.dotfiles/.git/ --work-tree=$HOME/.dotfiles/
+	dots = "!f() { cd private && git add . && git commit -m \"Update private submodule\" && git push && cd .. && git add private && git commit -m \"Update submodule reference\" && git push; }; f"
 
 [interactive]
 	diffFilter = diff-so-fancy --patch
