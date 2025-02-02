@@ -2,9 +2,6 @@
 	name = Jayson Francis
 	email = jaysonfrancis@users.noreply.github.com
 
-[include]
-    path = .gitconfig-local
-
 [includeIf "gitdir/i:~/work/"]
     path = ~/.dotfiles/private/configs/gitconfigs/.gitconfig-work
 
@@ -17,7 +14,7 @@
 
 [core]
 	autocrlf = input
-	excludesfile = ~/.dotfiles/gitconfigs/.gitignore
+	excludesfile = ~/.dotfiles/configs/gitconfigs/.gitignore
 	pager = diff-so-fancy | less --tabs=4 -RF
 
 [filter "lfs"]
