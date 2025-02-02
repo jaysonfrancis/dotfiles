@@ -1,0 +1,53 @@
+#!/usr/bin/env sh
+# https://github.com/koekeishiya/yabai/wiki/Configuration#configuration-file
+
+# for this to work you must configure sudo such that
+# it will be able to run the command without password
+yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+sudo yabai --load-sa
+
+# default layout (binary space partitioning) (bsp, stack, float)
+yabai -m config layout bsp
+
+# when new windows added, vertical will go to right, horizontal will go to bottom
+yabai -m config window_placement second_child
+yabai -m config window_topmost off
+
+# padding
+yabai -m config top_padding 20
+yabai -m config bottom_padding 20
+yabai -m config left_padding 20
+yabai -m config right_padding 20
+yabai -m config window_gap 10
+
+yabai -m config active_window_opacity 1.0
+yabai -m config normal_window_opacity 0.9
+yabai -m config menubar_opacity 1.0
+yabai -m config window_opacity off
+
+# center mouse on window with focus
+yabai -m config mouse_follows_focus off
+
+# modifier for clicking and dragging with mouse
+yabai -m config mouse_modifier alt
+
+# set modifier + left-click drag to move window
+yabai -m config mouse_action1 move
+
+# set modifier + right-click drag to resize window
+yabai -m config mouse_action2 resize
+
+# when window is dropped in center of another window, swap them (on edges it will split it)
+yabai -m mouse_drop_action swap
+
+# list of apps to ignore
+yabai -m rule --add app="^System Settings$" manage=off
+yabai -m rule --add app="^Calculator$" manage=off
+yabai -m rule --add app="^Messages$" manage=off
+yabai -m rule --add app="Microsoft Teams" manage=off
+yabai -m rule --add app="Microsoft Outlook" manage=off
+yabai -m rule --add app="Finder" manage=off
+yabai -m rule --add app="Spotify" manage=off
+yabai -m rule --add app="^Acrobat" manage=off
+
+echo "yabai configuration loaded.."

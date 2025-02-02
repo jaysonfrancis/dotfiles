@@ -1,0 +1,17 @@
+.DS_Store
+.vscode
+.todo
+.idea
+*.pyc*
+*.log
+*.nvim/
+**/__pycache__/
+**egg-info**
+gradle/gradle.properties
+poetry.lock
+pyrightconfig.json
+*pem
+.ipynb_checkpoints
+.env
+lazy-lock*
+uv.lock

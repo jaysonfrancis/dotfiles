@@ -1,0 +1,12 @@
+{
+  "extras": [
+    "lazyvim.plugins.extras.editor.fzf",
+    "lazyvim.plugins.extras.editor.harpoon2",
+    "lazyvim.plugins.extras.lang.python",
+    "lazyvim.plugins.extras.lang.toml"
+  ],
+  "news": {
+    "NEWS.md": "10960"
+  },
+  "version": 7
+}

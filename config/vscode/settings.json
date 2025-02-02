@@ -1,0 +1,112 @@
+{
+    "editor.fontSize": 14,
+    "editor.lineHeight": 22,
+    "editor.lineNumbers": "relative",
+    "vim.smartRelativeLine": true,
+    "editor.hover.enabled": false,
+    "breadcrumbs.enabled": false,
+    "terminal.external.osxExec": "iTerm.app",
+    "editor.minimap.enabled": false,
+    "[python]": {
+        "editor.formatOnType": true
+    },
+    "editor.accessibilityPageSize": 40,
+    "editor.inlineSuggest.enabled": true,
+    "github.copilot.enable": {
+        "*": false,
+        "plaintext": false,
+        "markdown": true,
+        "scminput": false
+    },
+    "github.copilot.advanced": {},
+    "files.autoSave": "onFocusChange",
+    "files.autoSaveDelay": 5,
+    "terminal.integrated.inheritEnv": false,
+    "files.exclude": {
+        "**/__pycache__/": true,
+        "**/.ipynb_checkpoints": true,
+        "**./pytest_cache": true
+    },
+    "git.ignoreLegacyWarning": true,
+    "python.languageServer": "Pylance",
+    "python.analysis.autoImportCompletions": true,
+    "python.analysis.extraPaths": [
+        "~/dev/"
+    ],
+    "jupyter.completionTriggerCharacters": {
+        "bash": [
+            "$",
+            "{"
+        ],
+        "java": [
+            ".",
+            "@",
+            "#"
+        ],
+        "javascript": [
+            ".",
+            "\"",
+            "'",
+            "/",
+            "@"
+        ],
+        "python": [
+            ".",
+            "%",
+            "'",
+            "\""
+        ],
+        "julia": [
+            "."
+        ],
+        "r": [
+            "[",
+            "(",
+            ",",
+            "$",
+            "@",
+            "\"",
+            "'"
+        ],
+        "rust": [
+            ".",
+            ":"
+        ],
+        "scala": [
+            "."
+        ],
+        "typescript": [
+            ".",
+            "\"",
+            "'",
+            "/",
+            "@",
+            "<"
+        ]
+    },
+    "editor.semanticTokenColorCustomizations": {},
+    "keyboard.touchbar.enabled": false,
+    "workbench.tree.indent": 30,
+    "workbench.tree.renderIndentGuides": "always",
+    "editor.mouseWheelZoom": true,
+    "workbench.colorCustomizations": {
+        "tree.indentGuidesStroke": "#008070",
+        "notebook.focusedEditorBorder": "#f30a",
+        "notebook.focusedRowBorder": "#ff0",
+        "notebook.focusedCellBorder": "#f30a",
+        "notebook.cellEditorBackground": "#091c2f",
+        "notebook.cellToolbarSeparator": "#150303",
+        "notebook.outputContainerBackgroundColor": "#1b3754"
+    },
+    "notebook.output.textLineLimit": 50,
+    "vim.enableNeovim": true,
+    "extensions.experimental.affinity": {
+        "asvetliakov.vscode-neovim": 1
+    },
+    "workbench.colorTheme": "Tokyo Night",
+    "explorer.sortOrder": "modified",
+    "remote.autoForwardPortsSource": "hybrid",
+    "workbench.iconTheme": "vscode-icons",
+    "telemetry.telemetryLevel": "off",
+    "jupyter.askForKernelRestart": false,
+}

@@ -1,0 +1,64 @@
+[user]
+	name = Jayson Francis
+	email = jaysonfrancis@users.noreply.github.com
+
+[include]
+    path = .gitconfig-local
+
+[includeIf "gitdir/i:~/work/"]
+    path = ~/.dotfiles/private/configs/gitconfigs/.gitconfig-work
+
+[pull]
+    rebase = true
+
+[apply]
+  ignorewhitespace = change
+  whitespace = nowarn
+
+[core]
+	autocrlf = input
+	excludesfile = ~/.dotfiles/gitconfigs/.gitignore
+	pager = diff-so-fancy | less --tabs=4 -RF
+
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+
+[alias]
+    st = status
+    br = branch
+    ci = commit
+    undo = reset --soft HEAD^
+    up = pull --rebase
+    co = checkout
+    cl = clean
+    lg = log --oneline --graph --decorate --all
+    pushall = !git remote | xargs -L1 git push --all
+    supdate = !git submodule update --remote --merge
+    dots = !git --git-dir=$HOME/.dotfiles/.git/ --work-tree=$HOME/.dotfiles/
+
+[interactive]
+	diffFilter = diff-so-fancy --patch
+
+[color]
+    ui = true
+    interactive = true
+    branch = true
+    status = true
+
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
+
+[color "diff"]
+	meta = 11
+	frag = magenta bold
+	func = 146 bold
+	commit = yellow bold
+	old = red bold
+	new = green bold
+    whitespace = red reverse
