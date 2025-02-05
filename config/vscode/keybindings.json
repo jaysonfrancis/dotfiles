@@ -1,5 +1,39 @@
-// Place your key bindings in this file to override the defaults
+// vscode bindings
 [
+    {
+        "key": "shift+cmd+s",
+        "command": "-workbench.action.files.saveAs"
+    },
+    {
+        "key": "shift+cmd+s",
+        "command": "-workbench.action.files.saveLocalFile",
+        "when": "remoteFileDialogVisible"
+    },
+    {
+        "key": "shift+cmd+e",
+        "command": "-workbench.view.explorer",
+        "when": "viewContainer.workbench.view.explorer.enabled"
+    },
+    {
+        "key": "cmd+s",
+        "command": "workbench.action.files.save"
+    },
+    {
+        "key": "cmd+s",
+        "command": "-workbench.action.files.save"
+    },
+    {
+        "key": "cmd+e",
+        "command": "workbench.action.toggleSidebarVisibility"
+    },
+    {
+        "key": "cmd+b",
+        "command": "-workbench.action.toggleSidebarVisibility"
+    },
+    {
+        "key": "cmd+0",
+        "command": "-workbench.action.focusSideBar"
+    },
     {
         "key": "cmd+e",
         "command": "-actions.findWithSelection"
@@ -10,11 +44,13 @@
         "when": "accessibilityHelpIsShown"
     },
     {
+        "key": "shift+cmd+e",
+        "command": "workbench.explorer.fileView.focus"
+    },
+    {
         "key": "ctrl+n",
         "command": "workbench.action.toggleSidebarVisibility"
     },
-    {
-        "key": "cmd+b",
-        "command": "-workbench.action.toggleSidebarVisibility"
-    }
+
+
 ]
