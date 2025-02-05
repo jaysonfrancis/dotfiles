@@ -20,7 +20,7 @@ opt.expandtab = true
 opt.smartindent = true
 
 opt.wrap = true -- Enable wrapping
-opt.textwidth = 100 -- Automatically wrap lines at 100 characters (the limit is 101, because it counts from column 0)
+opt.textwidth = 0 -- Automatically wrap lines
 opt.colorcolumn = "101" -- Show color column at the 101st character as a visual aid
 -- opt.linebreak = true
 -- opt.showbreak = "↪ " -- Adds a subtle arrow for wrapped lines.
