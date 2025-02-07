@@ -13,12 +13,12 @@ background-blur-radius = 20
 
 # Comments start with a `#` and are only valid on their own line.
 # Blank lines are ignored!
-
 keybind = ctrl+z=close_surface
 keybind = ctrl+d=new_split:right
 
 # Empty values reset the configuration to the default value
-font-family = "Fira Code"
+font-family = ""
+font-family = "Iosevka Term Extended"
 
 # Keybindings
 keybind = ctrl+z=unbind
