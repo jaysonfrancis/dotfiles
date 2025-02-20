@@ -1,11 +1,10 @@
-.DS_Store
-.vscode
 .todo
-.idea
+*.so
+*.pyd
+*.pdb
 *.pyc*
 *.log
-*.nvim/
-**/__pycache__/
+.python-version
 **egg-info**
 gradle/gradle.properties
 poetry.lock
@@ -15,3 +14,26 @@ pyrightconfig.json
 .env
 lazy-lock*
 uv.lock
+
+# OS 
+.DS_Store
+
+# IDE
+.idea/
+.vscode/
+.vim
+.nvim/
+
+# Rust
+target/
+
+# Python
+.hypothesis/
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+.venv*/
+__pycache__/
+**/__pycache__/
+.coverage
+
