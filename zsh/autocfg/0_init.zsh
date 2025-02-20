@@ -36,8 +36,10 @@ eval "$(zoxide init zsh)"
 alias cd="z"
 
 # ---- individual history per tab ----
-# unsetopt inc_append_history
-# unsetopt share_history
+unsetopt inc_append_history
+unsetopt share_history
+setopt noincappendhistory
+setopt nosharehistory
 
 # --- terminall arrow keys ---
 bindkey '[C' forward-word
