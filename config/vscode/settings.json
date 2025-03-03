@@ -100,13 +100,17 @@
     },
     "notebook.output.textLineLimit": 50,
     "vim.enableNeovim": true,
-    "extensions.experimental.affinity": {
-        "asvetliakov.vscode-neovim": 1
-    },
+    "vscode-neovim.neovimExecutablePaths.darwin" : "/usr/local/bin/nvim",
+    "vscode-neovim.neovimInitVimPaths.darwin" : "$HOME/.dotfiles/config/nvim/init.lua",
+
     "workbench.colorTheme": "Tokyo Night",
     "explorer.sortOrder": "modified",
     "remote.autoForwardPortsSource": "hybrid",
     "workbench.iconTheme": "vscode-icons",
     "telemetry.telemetryLevel": "off",
     "jupyter.askForKernelRestart": false,
+    "extensions.experimental.affinity": {
+        "asvetliakov.vscode-neovim": 1
+    },
+    
 }
