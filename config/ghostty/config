@@ -29,4 +29,6 @@ keybind = global:cmd+`=toggle_visibility
 shell-integration = zsh
 link-url = true
 
+title = " "
+
 config-file=?remote_config

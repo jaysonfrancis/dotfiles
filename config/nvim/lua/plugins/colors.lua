@@ -9,7 +9,7 @@ return {
 		"folke/tokyonight.nvim",
 		name = "tokyonight",
 		opts = {
-			transparent = false,
+			transparent = true,
 			style = "moon",
 			styles = {
 				sidebars = "transparent",
