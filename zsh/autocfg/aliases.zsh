@@ -44,3 +44,7 @@ alias dots="cd ~/.dotfiles/; vim zsh/autocfg/0_init.zsh"
 alias obs="cd ~/Obs; vim"
 
 alias jup="jupyter lab --autoreload --no-browser . &!"
+
+alias t1="open -na Ghostty --args --theme='Blue Matrix'"
+
+

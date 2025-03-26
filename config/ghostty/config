@@ -1,8 +1,8 @@
 # https://ghostty.org/docs/config/reference
 
-# theme = tokyonight 
+theme = tokyonight 
 # catppuccin-frappe
-theme = ayu
+# theme = ayu
 
 # The syntax is "key = value". The whitespace around the
 # equals doesn't matter.
