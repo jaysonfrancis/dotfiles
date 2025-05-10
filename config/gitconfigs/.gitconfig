@@ -1,6 +1,6 @@
 [user]
-	name = Jayson Francis
-	email = jaysonfrancis@users.noreply.github.com
+	name = jfrancis
+	email = jaysonfrancis@gmail.com
 
 [includeIf "gitdir/i:~/work/"]
     path = ~/.dotfiles/private/config/gitconfigs/.gitconfig-work
