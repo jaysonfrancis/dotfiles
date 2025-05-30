@@ -1,5 +1,5 @@
 [user]
-	name = jfrancis
+	name = jaysonfrancis
 	email = jaysonfrancis@gmail.com
 
 [includeIf "gitdir/i:~/work/"]
