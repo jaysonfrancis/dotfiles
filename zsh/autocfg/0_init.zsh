@@ -65,5 +65,7 @@ compdef _uv_run_mod uv
 # --- activate rust ---
 . "$HOME/.cargo/env" 
 
+# Add maxtex
+export PATH="/usr/local/texlive/2025/bin/universal-darwin:$PATH"
 
 # End

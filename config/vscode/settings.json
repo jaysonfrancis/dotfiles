@@ -4,7 +4,6 @@
     "editor.lineNumbers": "relative",
     "vim.smartRelativeLine": true,
     "editor.hover.enabled": false,
-    "breadcrumbs.enabled": false,
     "terminal.external.osxExec": "iTerm.app",
     "editor.minimap.enabled": false,
     "[python]": {
@@ -103,7 +102,7 @@
     "vscode-neovim.neovimExecutablePaths.darwin" : "/usr/local/bin/nvim",
     "vscode-neovim.neovimInitVimPaths.darwin" : "$HOME/.dotfiles/config/nvim/init.lua",
 
-    "workbench.colorTheme": "Tokyo Night",
+    "workbench.colorTheme": "Monokai Dimmed",
     "explorer.sortOrder": "modified",
     "remote.autoForwardPortsSource": "hybrid",
     "workbench.iconTheme": "vscode-icons",
