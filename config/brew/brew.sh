@@ -38,6 +38,7 @@ apps=(
     jq                      # JSON parser
     koekeishiya/formulae/skhd  # Key-binding daemon for macOS
     koekeishiya/formulae/yabai # Tiling window manager for macOS
+    cloc   # count lines of code
 )
 
 # Install fonts (requires --cask)
