@@ -6,7 +6,6 @@
 --
 -- Or remove existing autocmds by their group name (which is prefixed with `lazyvim_` for the defaults)
 -- e.g. vim.api.nvim_del_augroup_by_name("lazyvim_wrap_spell")
-
 -- syntax highlighting for jsonl lines
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   pattern = "*.jsonl",
@@ -15,3 +14,15 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   end,
 })
 
+vim.api.nvim_create_autocmd("BufWritePre", {
+  --- Remove the whitespace eol ---
+  pattern = "*",
+  callback = function()
+    -- Save cursor position
+    local curpos = vim.api.nvim_win_get_cursor(0)
+    -- Remove trailing whitespace
+    vim.cmd([[%s/\s\+$//e]])
+    -- Restore cursor position
+    vim.api.nvim_win_set_cursor(0, curpos)
+  end,
+})

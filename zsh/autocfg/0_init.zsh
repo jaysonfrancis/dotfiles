@@ -5,6 +5,10 @@ HOST=$(hostname -s)
 EDITOR="nvim"
 USER=$(whoami)
 
+# Set a reusable directory for Zsh logs/history
+export ZSH_LOG_DIR="$HOME/.zsh_cache"
+[[ -d $ZSH_LOG_DIR ]] || mkdir -p "$ZSH_LOG_DIR"
+
 if [[ $TERM == "xterm-ghostty" ]]; then
     true
 
@@ -35,18 +39,35 @@ export BAT_THEME=tokyonight_night
 eval "$(zoxide init zsh)"
 alias cd="z"
 
-# ---- individual history per tab ----
-unsetopt inc_append_history
-unsetopt share_history
-setopt noincappendhistory
-setopt nosharehistory
+# Use per-host history and compdump locations
+export HISTFILE="$ZSH_LOG_DIR/zsh_history_$(hostname)"
+
+# Prevent history sharing/overwrite conflicts
+unsetopt share_history         # Prevent sharing history across terminals
+unsetopt inc_append_history    # Don’t auto-write after every command
+
+# HISTORY
+# setopt append_history          # Append on shell exit (not overwrite)
+setopt EXTENDED_HISTORY          # Write the history file in the ':start:elapsed;command' format.
+setopt HIST_EXPIRE_DUPS_FIRST    # Expire a duplicate event first when trimming history.
+setopt HIST_FIND_NO_DUPS         # Do not display a previously found event.
+setopt HIST_IGNORE_ALL_DUPS      # Delete an old recorded event if a new event is a duplicate.
+setopt HIST_IGNORE_DUPS          # Do not record an event that was just recorded again.
+setopt HIST_IGNORE_SPACE         # Do not record an event starting with a space.
+setopt HIST_SAVE_NO_DUPS         # Do not write a duplicate event to the history file.
+# setopt SHARE_HISTORY             # Share history between all sessions.
+
+# Completion dump
+ZSH_COMPDUMP="$ZSH_LOG_DIR/.zcompdump_$(hostname)"
+
+autoload -Uz compinit
+compinit -d "$ZSH_COMPDUMP"
 
 # --- terminall arrow keys ---
 bindkey '[C' forward-word
 bindkey '[D' backward-word
 
-# --- added by typer --auto-complete ---
-fpath+=~/.zfunc; autoload -Uz compinit; compinit
+# Enable menu-style tab completion
 zstyle ':completion:*' menu select
 
 # --- uv autocomplete ---
@@ -63,7 +84,7 @@ _uv_run_mod() {
 compdef _uv_run_mod uv
 
 # --- activate rust ---
-. "$HOME/.cargo/env" 
+. "$HOME/.cargo/env"
 
 # Add maxtex
 export PATH="/usr/local/texlive/2025/bin/universal-darwin:$PATH"
