@@ -1,9 +1,12 @@
 [user]
 	name = jaysonfrancis
-	email = jaysonfrancis@gmail.com
+    email = jaysonfrancis@gmail.com
 
-[includeIf "gitdir/i:~/work/"]
-    path = ~/.dotfiles/private/config/gitconfigs/.gitconfig-work
+[includeIf "gitdir/i:/home/jaysonfrancis/dev/wk/"]
+    path = ~/.dotfiles/private/config/gitconfigs/.gitconfig-wk
+
+[includeIf "gitdir/i:/Users/jaysonfrancis/dev/wk/"]
+    path = ~/.dotfiles/private/config/gitconfigs/.gitconfig-wk
 
 [pull]
     rebase = true
