@@ -6,7 +6,7 @@ export ZSH_CUSTOM="$HOME/.dotfiles/zsh/autocfg"
 # load a random theme each time Oh My Zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME=$([[ -n $SSH_CONNECTION ]] && echo "af-magic" || echo "robbyrussell")
+ZSH_THEME=$([[ -n $SSH_CONNECTION ]] && echo "edvardm" || echo "robbyrussell")
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -105,4 +105,4 @@ source $ZSH/oh-my-zsh.sh
 #
 #
 #
-# End ------------------------- 
+# End -------------------------
