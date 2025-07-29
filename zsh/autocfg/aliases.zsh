@@ -1,8 +1,8 @@
-# aliases.zsh 
+# aliases.zsh
 
 alias LL="eza -1lF --icons=always --color --long --git -s modified --total-size -o"
 alias l="eza --color -l --git --icons=always --no-user --no-permissions -s type -s modified --group-directories-first -o --time-style relative"
-alias ll="eza --color -l --git --icons=always --no-user --no-permissions -s type -s modified --all --group-directories-first -o --time-style relative"
+alias ll="eza --color -l --git --icons=always --no-permissions -s type -s modified --all --group-directories-first -o --time-style relative"
 alias lt="eza -1T"
 alias ls="ls -l"
 alias rp="realpath" # get abs path
@@ -23,6 +23,8 @@ alias help="tldr"
 alias gg="lazygit"
 alias lzd="lazydocker"
 alias k="kubectl"
+
+alias dfh="df -H --output=source,fstype,size,used,avail,pcent,target"
 
 # TODO: for iterm, fix for ghostty "tmux new-session -A -s main"
 alias tmx="tmux -CC new -A -s main"
