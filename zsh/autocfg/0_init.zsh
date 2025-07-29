@@ -5,10 +5,6 @@ HOST=$(hostname -s)
 EDITOR="nvim"
 USER=$(whoami)
 
-# Set a reusable directory for Zsh logs/history
-export ZSH_LOG_DIR="$HOME/.zsh_cache"
-[[ -d $ZSH_LOG_DIR ]] || mkdir -p "$ZSH_LOG_DIR"
-
 if [[ $TERM == "xterm-ghostty" ]]; then
     true
 
@@ -40,7 +36,7 @@ eval "$(zoxide init zsh)"
 alias cd="z"
 
 # Use per-host history and compdump locations
-export HISTFILE="$ZSH_LOG_DIR/zsh_history_$(hostname)"
+export HISTFILE="$ZSH/cache/zsh_history_$HOST"
 
 # Prevent history sharing/overwrite conflicts
 unsetopt share_history         # Prevent sharing history across terminals
@@ -57,11 +53,6 @@ setopt HIST_IGNORE_SPACE         # Do not record an event starting with a space.
 setopt HIST_SAVE_NO_DUPS         # Do not write a duplicate event to the history file.
 # setopt SHARE_HISTORY             # Share history between all sessions.
 
-# Completion dump
-ZSH_COMPDUMP="$ZSH_LOG_DIR/.zcompdump_$(hostname)"
-
-autoload -Uz compinit
-compinit -d "$ZSH_COMPDUMP"
 
 # --- terminall arrow keys ---
 bindkey '[C' forward-word
