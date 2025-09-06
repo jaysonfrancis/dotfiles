@@ -100,9 +100,7 @@
     "notebook.output.textLineLimit": 50,
     "vim.enableNeovim": true,
     "vscode-neovim.neovimExecutablePaths.darwin" : "/usr/local/bin/nvim",
-    "vscode-neovim.neovimInitVimPaths.darwin" : "$HOME/.dotfiles/config/nvim/init.lua",
-
-    "workbench.colorTheme": "Monokai Dimmed",
+    "vscode-neovim.neovimInitVimPaths.darwin": "$HOME/.dotfiles/config/nvim/init.lua",
     "explorer.sortOrder": "modified",
     "remote.autoForwardPortsSource": "hybrid",
     "workbench.iconTheme": "vscode-icons",
