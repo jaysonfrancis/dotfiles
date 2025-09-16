@@ -9,13 +9,19 @@ function uvrun() {
 #     # path to optional config
 #     local file="$HOME/.dotfiles/config/ghostty/remote_config"
 #     local file_off="${file}_off"
-#     # rename file on/off 
+#     # rename file on/off
 #     [ -f "$file" ] && mv "$file" "$file_off" || mv "$file_off" "$file"
 #     # mac: trigger reload_config
 #     osascript -e 'tell application "System Events" to keystroke "," using {command down, shift down}'
 # }
 
 function ca() {
+    pick_local_env() {
+        local env
+        env=$(\ls /local/$USER/venv 2>/dev/null | fzf --height 40% --border)
+        [[ -n "$env" ]] && source "/local/$USER/venv/$env/bin/activate" || echo "No environment selected."
+    }
+
     pick_conda_env() {
         local env
         env=$(conda env list | sed '1,3d; s/ .*$//' | fzf --height 40% --border)
@@ -23,20 +29,37 @@ function ca() {
     }
 
     case "$1" in
-        --all)
+        --conda)
             pick_conda_env
             ;;
-        "")
+        --all)
+            # cycle: local → user venv → conda
             if [[ -d .venv ]]; then
                 source .venv/bin/activate
             elif [[ -d venv ]]; then
                 source venv/bin/activate
+            elif [[ -d /local/$USER/venv ]]; then
+                pick_local_env
+            else
+                pick_conda_env
+            fi
+            ;;
+        "")
+            # default: local → user venv → conda fallback
+            if [[ -d .venv ]]; then
+                source .venv/bin/activate
+            elif [[ -d venv ]]; then
+                source venv/bin/activate
+            elif [[ -d /local/$USER/venv ]]; then
+                pick_local_env
             else
                 pick_conda_env
             fi
             ;;
         *)
-            if conda env list | grep -q "^$1 "; then
+            if [[ -d "/local/$USER/venv/$1" ]]; then
+                source "/local/$USER/venv/$1/bin/activate"
+            elif conda env list | grep -q "^$1 "; then
                 conda activate "$1"
             else
                 echo "Environment '$1' not found."
@@ -50,7 +73,7 @@ function da() {
     if [[ "$CONDA_DEFAULT_ENV" != "" ]]; then
         conda deactivate # If conda env is active
     elif [[ "$VIRTUAL_ENV" != "" ]]; then
-        deactivate 
+        deactivate
     else
         echo "No virtual environment is active."
     fi
