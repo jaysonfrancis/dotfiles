@@ -1,0 +1,7 @@
+[include]
+    path = ~/.gitconfig
+
+[user]
+	name = jaysonfrancis
+    email = jaysonfrancis@gmail.com
+	signingkey = ~/.ssh/ssh_github.pub

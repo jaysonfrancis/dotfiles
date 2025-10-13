@@ -110,5 +110,6 @@
         "asvetliakov.vscode-neovim": 1
     },
     "python.analysis.typeCheckingMode": "basic",
+    "workbench.colorTheme": "Winter is Coming (Dark Blue)",
     
 }

@@ -1,11 +1,4 @@
-[user]
-	name = jaysonfrancis
-    email = jaysonfrancis@gmail.com
-
-[includeIf "gitdir/i:/home/jaysonfrancis/dev/wk/"]
-    path = ~/.dotfiles/private/config/gitconfigs/.gitconfig-wk
-
-[includeIf "gitdir/i:/Users/jaysonfrancis/dev/wk/"]
+[include]
     path = ~/.dotfiles/private/config/gitconfigs/.gitconfig-wk
 
 [pull]
@@ -18,13 +11,14 @@
 [core]
 	autocrlf = input
 	excludesfile = ~/.dotfiles/config/gitconfigs/.gitignore
-	pager = diff-so-fancy | less --tabs=4 -RF
+    pager = diff-so-fancy | less --tabs=4 -RF
+    editor = vim
 
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
-	required = true
+    required = true
 
 [alias]
     st = status
@@ -37,6 +31,7 @@
     lg = log --oneline --graph --decorate --all
     pushall = !git remote | xargs -L1 git push --all
     supdate = !git submodule update --remote --merge
+    resign = "!f() { git rebase --exec 'git commit --amend --no-edit -n -S' -i \"$1\"; }; f"
 	dots = "!f() { cd private && git add . && git commit -m \"Update private submodule\" && git push && cd .. && git add private && git commit -m \"Update submodule reference\" && git push; }; f"
 
 [interactive]
@@ -62,3 +57,12 @@
 	old = red bold
 	new = green bold
     whitespace = red reverse
+
+[commit]
+    gpgsign = true
+
+[gpg]
+    format = ssh
+
+[init]
+	defaultBranch = main
