@@ -1,6 +1,3 @@
-[include]
-    path = ~/.dotfiles/private/config/gitconfigs/.gitconfig-wk
-
 [pull]
     rebase = true
 
@@ -10,9 +7,9 @@
 
 [core]
 	autocrlf = input
-	excludesfile = ~/.dotfiles/config/gitconfigs/.gitignore
     pager = diff-so-fancy | less --tabs=4 -RF
     editor = vim
+	excludesFiles = /home/jaysonfrancis/.dotfiles/config/gitconfigs/.gitignore
 
 [filter "lfs"]
 	clean = git-lfs clean -- %f
@@ -65,4 +62,4 @@
     format = ssh
 
 [init]
-	defaultBranch = main
+    defaultBranch = main
