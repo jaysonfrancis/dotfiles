@@ -35,7 +35,7 @@ macos-titlebar-style=tabs
 macos-auto-secure-input=true
 mouse-hide-while-typing=true
 
-# title = " "
+title = " "
 
 # ---
 
