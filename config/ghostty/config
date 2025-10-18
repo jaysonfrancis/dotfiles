@@ -1,34 +1,57 @@
 # https://ghostty.org/docs/config/reference
+# JF
 
-theme = tokyonight 
-# catppuccin-frappe
+theme = tokyonight
 # theme = ayu
+# theme = "Popping and Locking"
 
-# The syntax is "key = value". The whitespace around the
-# equals doesn't matter.
 # background = 282c34
 # foreground = ffffff
-background-opacity = 0.95
-background-blur-radius = 20
-
-# Comments start with a `#` and are only valid on their own line.
-# Blank lines are ignored!
-keybind = ctrl+z=close_surface
-keybind = ctrl+d=new_split:right
+background-opacity = 0.9
+background-blur-radius = 100
 
 # Empty values reset the configuration to the default value
 font-family = ""
 font-family = "Iosevka Term Extended"
 
 # Keybindings
-keybind = ctrl+z=unbind
+# keybind = ctrl+z=close_surface # JF: what's this
 
-keybind = global:cmd+`=toggle_visibility
+keybind = ctrl+d=new_split:right
+keybind = ctrl+z=unbind
+keybind = global:cmd+backquote=toggle_visibility
+# keybind = global:cmd+backquote=toggle_quick_terminal
+
 
 # shell integration
 shell-integration = zsh
 link-url = true
 
-title = " "
+# Disable Ghostty built-in tab title shell integration
+# https://ghostty.org/docs/config/reference#shell-integration-features
+shell-integration-features = no-title, no-cursor, ssh-env
 
-config-file=?remote_config
+macos-titlebar-style=tabs
+macos-auto-secure-input=true
+mouse-hide-while-typing=true
+
+# title = " "
+
+# ---
+
+font-size = 16
+
+# cursor-color = cell-foreground
+cursor-color = #A1078D
+
+bold-color = bright
+
+window-step-resize = true
+window-height = 37
+window-width = 135
+
+copy-on-select = clipboard
+confirm-close-surface = false
+
+auto-update = download
+auto-update-channel = tip

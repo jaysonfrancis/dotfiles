@@ -12,6 +12,8 @@ alias gP="git push" #
 alias gs="git status" # git st
 alias gd="git diff"
 alias ga="git add -u ."
+alias gspush="git stash push"
+alias gspull="git stash pop"
 
 alias vim="nvim"
 alias zz="vim ~/.zshrc"
