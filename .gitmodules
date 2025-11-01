@@ -1,3 +1,4 @@
 [submodule "private"]
 	path = private
-	url = git@github.com:jaysonfrancis/private.git
+    url = git@github.com:jaysonfrancis/private.git
+    branch = main
