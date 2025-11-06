@@ -1,8 +1,8 @@
 # https://ghostty.org/docs/config/reference
 # JF
 
-theme = tokyonight
-# theme = ayu
+# theme = tokyonight
+theme = ayu
 # theme = "Popping and Locking"
 
 # background = 282c34
@@ -10,9 +10,14 @@ theme = tokyonight
 background-opacity = 0.9
 background-blur-radius = 100
 
+cursor-color = cell-foreground
+cursor-color = #A1078D
+bold-color = bright
+
 # Empty values reset the configuration to the default value
 font-family = ""
 font-family = "Iosevka Term Extended"
+font-size = 16
 
 # Keybindings
 # keybind = ctrl+z=close_surface # JF: what's this
@@ -34,23 +39,19 @@ shell-integration-features = no-title, no-cursor, ssh-env
 macos-titlebar-style=tabs
 macos-auto-secure-input=true
 mouse-hide-while-typing=true
+macos-window-shadow=false
+
+clipboard-trim-trailing-spaces=true
+copy-on-select = clipboard
 
 title = " "
 
 # ---
 
-font-size = 16
-
-# cursor-color = cell-foreground
-cursor-color = #A1078D
-
-bold-color = bright
-
 window-step-resize = true
 window-height = 37
 window-width = 135
 
-copy-on-select = clipboard
 confirm-close-surface = false
 
 auto-update = download

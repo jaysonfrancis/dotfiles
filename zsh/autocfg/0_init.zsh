@@ -77,9 +77,6 @@ compdef _uv_run_mod uv
 # --- activate rust ---
 . "$HOME/.cargo/env"
 
-# Add maxtex
-export PATH="/usr/local/texlive/2025/bin/universal-darwin:$PATH"
-
 # # Disable auto-setting terminal title. (ghostty)
 # DISABLE_AUTO_TITLE="true"
 # function precmd () {
@@ -91,4 +88,4 @@ export PATH="/usr/local/texlive/2025/bin/universal-darwin:$PATH"
 #   print -Pn "\e]0;🚀 $(print -rD $PWD) $1 🚀\a"
 # }
 
-# End
+# En

@@ -5,6 +5,10 @@ function uvrun() {
     uv run $1
 }
 
+function ipof() {
+  getent hosts "$1" | awk '{print $1}'
+}
+
 # function rg(){
 #     # path to optional config
 #     local file="$HOME/.dotfiles/config/ghostty/remote_config"
