@@ -56,3 +56,4 @@ confirm-close-surface = false
 
 auto-update = download
 auto-update-channel = tip
+keybind = shift+enter=text:\x1b\r
