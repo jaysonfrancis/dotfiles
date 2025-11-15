@@ -6,7 +6,7 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
 vim.g.minipairs_disable = true -- disable the quote matching
-vim.g.autoformat = false -- disable auto format on save
+vim.g.autoformat = true -- auto format on save
 
 local opt = vim.opt
 

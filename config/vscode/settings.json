@@ -110,6 +110,22 @@
         "asvetliakov.vscode-neovim": 1
     },
     "python.analysis.typeCheckingMode": "basic",
-    "workbench.colorTheme": "Monokai",
-    
+    "workbench.colorTheme": "Default Dark+",
+    // "notebook.output.fontFamily": "JetBrains Mono, Consolas, 'Courier New', monospace",
+    "notebook.output.fontSize": 14,
+    "notebook.output.lineHeight": 1.5,
+    "llama-vscode.rag_enabled": false,
+    "llama-vscode.tool_run_terminal_command_enabled": false,
+    "llama-vscode.tool_search_source_enabled": false,
+    "llama-vscode.tool_read_file_enabled": false,
+    "llama-vscode.tool_list_directory_enabled": false,
+    "llama-vscode.tool_regex_search_enabled": false,
+    "llama-vscode.tool_delete_file_enabled": false,
+    "llama-vscode.tool_get_diff_enabled": false,
+    "llama-vscode.tool_edit_file_enabled": false,
+    "llama-vscode.tool_ask_user_enabled": false,
+    "llama-vscode.tool_custom_tool_enabled": false,
+    "llama-vscode.tool_custom_eval_tool_enabled": false,
+    "llama-vscode.tool_llama_vscode_help_enabled": false,
+    "llama-vscode.enabled": false
 }

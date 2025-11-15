@@ -50,5 +50,3 @@ alias obs="cd ~/Obs; vim"
 alias jup="jupyter lab --autoreload --no-browser . &!"
 
 alias t1="open -na Ghostty --args --theme='Blue Matrix'"
-
-

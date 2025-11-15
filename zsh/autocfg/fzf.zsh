@@ -1,9 +1,4 @@
-#fzf.zsh 
-
-# What is this?
-# export NVM_DIR="$HOME/.nvm"
-# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+#fzf.zsh
 
 # Set up fzf key bindings and fuzzy completion
 export FZF_COMPLETION_TRIGGER='**' # Use ~~ as the trigger sequence instead of the default **
@@ -47,4 +42,3 @@ _fzf_comprun() {
     *)            fzf --preview "$show_file_or_dir_preview" "$@" ;;
   esac
 }
-

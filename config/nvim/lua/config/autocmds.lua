@@ -26,3 +26,16 @@ vim.api.nvim_create_autocmd("BufWritePre", {
     vim.api.nvim_win_set_cursor(0, curpos)
   end,
 })
+
+-- Toggle relative numbers in normal mode only
+vim.api.nvim_create_autocmd({"InsertEnter"}, {
+  callback = function()
+    vim.opt.relativenumber = false
+  end,
+})
+vim.api.nvim_create_autocmd({"InsertLeave"}, {
+  callback = function()
+    vim.opt.relativenumber = true
+  end,
+})
+

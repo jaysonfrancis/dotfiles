@@ -1,5 +1,6 @@
 return {
 	"shrynx/line-numbers.nvim",
+    enabled = false,
 	opts = {
 		mode = "both", -- "relative", "absolute", "both", "none"
 		format = "abs_rel", -- or "rel_abs"

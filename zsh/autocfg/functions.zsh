@@ -9,16 +9,6 @@ function ipof() {
   getent hosts "$1" | awk '{print $1}'
 }
 
-# function rg(){
-#     # path to optional config
-#     local file="$HOME/.dotfiles/config/ghostty/remote_config"
-#     local file_off="${file}_off"
-#     # rename file on/off
-#     [ -f "$file" ] && mv "$file" "$file_off" || mv "$file_off" "$file"
-#     # mac: trigger reload_config
-#     osascript -e 'tell application "System Events" to keystroke "," using {command down, shift down}'
-# }
-
 function ca() {
     pick_local_env() {
         local env
