@@ -2,31 +2,34 @@
 # JF
 
 # theme = tokyonight
-theme = ayu
+# theme = ayu
 # theme = "Popping and Locking"
+theme = "Argonaut"
 
 # background = 282c34
 # foreground = ffffff
-background-opacity = 0.9
+background-opacity = 0.90
 background-blur-radius = 100
 
 cursor-color = cell-foreground
 cursor-color = #A1078D
-bold-color = bright
+cursor-style = block
+cursor-invert-fg-bg
 
-# Empty values reset the configuration to the default value
-font-family = ""
-font-family = "Iosevka Term Extended"
-font-size = 16
+# font-family = "Iosevka Term Extended"
+font-family = "Anka/Coder"
+font-thicken = true
+font-size = 14
+bold-color = bright
 
 # Keybindings
 # keybind = ctrl+z=close_surface # JF: what's this
+# keybind = global:cmd+backquote=toggle_quick_terminal
 
 keybind = ctrl+d=new_split:right
 keybind = ctrl+z=unbind
 keybind = global:cmd+backquote=toggle_visibility
-# keybind = global:cmd+backquote=toggle_quick_terminal
-
+keybind = shift+enter=text:\x1b\r
 
 # shell integration
 shell-integration = zsh
@@ -40,6 +43,7 @@ macos-titlebar-style=tabs
 macos-auto-secure-input=true
 mouse-hide-while-typing=true
 macos-window-shadow=false
+mouse-scroll-multiplier = 2
 
 clipboard-trim-trailing-spaces=true
 copy-on-select = clipboard
@@ -51,9 +55,8 @@ title = " "
 window-step-resize = true
 window-height = 37
 window-width = 135
-
+window-colorspace = "display-p3"
 confirm-close-surface = false
 
 auto-update = download
 auto-update-channel = tip
-keybind = shift+enter=text:\x1b\r
