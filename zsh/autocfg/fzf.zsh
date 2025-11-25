@@ -9,7 +9,12 @@ export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
 
-source <(fzf --zsh)
+# Cache fzf init for performance
+FZF_CACHE="$ZSH/cache/fzf_init.zsh"
+if [[ ! -f "$FZF_CACHE" ]] || [[ "$(which fzf)" -nt "$FZF_CACHE" ]]; then
+    fzf --zsh > "$FZF_CACHE" 2>/dev/null
+fi
+[[ -f "$FZF_CACHE" ]] && source "$FZF_CACHE"
 
 # Use fd (https://github.com/sharkdp/fd) for listing path candidates.
 # - The first argument to the function ($1) is the base path to start traversal

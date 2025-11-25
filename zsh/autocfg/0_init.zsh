@@ -1,5 +1,8 @@
 # autocfg
 
+# Ensure cache directory exists for performance optimizations
+[[ ! -d "$ZSH/cache" ]] && mkdir -p "$ZSH/cache"
+
 OS=$(uname)
 HOST=$(hostname -s)
 EDITOR="nvim"
@@ -19,11 +22,13 @@ fi
 source ~/.dotfiles/private/private_init.zsh
 
 # --- cmd highlighting ---
-source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# Cache brew prefix for performance (avoid subprocess calls)
+BREW_PREFIX="${BREW_PREFIX:-$(brew --prefix 2>/dev/null || echo '/opt/homebrew')}"
+source "$BREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 ZSH_HIGHLIGHT_STYLES[arg0]='fg=#34bdeb,bold'
 
 # --- cmd auto suggestions ---
-source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source "$BREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
 
 # --- tmx integration ----
 export ITERM_ENABLE_SHELL_INTEGRATION_WITH_TMUX=YES
@@ -32,7 +37,12 @@ export ITERM_ENABLE_SHELL_INTEGRATION_WITH_TMUX=YES
 export BAT_THEME=tokyonight_night
 
 # ---- Zoxide (better cd) ----
-eval "$(zoxide init zsh)"
+# Cache zoxide init for performance
+ZOXIDE_CACHE="$ZSH/cache/zoxide_init.zsh"
+if [[ ! -f "$ZOXIDE_CACHE" ]] || [[ "$(which zoxide)" -nt "$ZOXIDE_CACHE" ]]; then
+    zoxide init zsh > "$ZOXIDE_CACHE" 2>/dev/null
+fi
+[[ -f "$ZOXIDE_CACHE" ]] && source "$ZOXIDE_CACHE"
 alias cd="z"
 
 # Use per-host history and compdump locations
@@ -66,7 +76,12 @@ bindkey '^O' clear-screen        # C-o for clear screen
 zstyle ':completion:*' menu select
 
 # --- uv autocomplete ---
-eval "$(uv generate-shell-completion zsh)"
+# Cache uv completion for performance
+UV_CACHE="$ZSH/cache/uv_completion.zsh"
+if [[ ! -f "$UV_CACHE" ]] || [[ "$(which uv)" -nt "$UV_CACHE" ]]; then
+    uv generate-shell-completion zsh > "$UV_CACHE" 2>/dev/null
+fi
+[[ -f "$UV_CACHE" ]] && source "$UV_CACHE"
 
 # --- enable tab complete with 'uv run' ---
 _uv_run_mod() {

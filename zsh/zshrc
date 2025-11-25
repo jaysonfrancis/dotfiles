@@ -6,18 +6,34 @@ ZSH_THEME=$([[ -n $SSH_CONNECTION ]] && echo "blinks" || echo "robbyrussell")
 
 zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 
+# Optimized compinit - only rebuild when needed
 autoload -Uz compinit
-for dump in ~/.zcompdump(N.mh+24); do
-  compinit
-done
-compinit -C
+ZCOMPDUMP="${ZDOTDIR:-$HOME}/.zcompdump"
+if [[ -n ${ZCOMPDUMP}(#qN.mh+24) ]]; then
+    compinit -d "${ZCOMPDUMP}"
+else
+    compinit -C -d "${ZCOMPDUMP}"
+fi
 
 # export ZSH_COMPDUMP=$ZSH/cache/.zcompdump-$HOST
 
 source $ZSH/oh-my-zsh.sh
 
+# NVM Lazy Loading - only load when node/npm commands are used
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+declare -a NODE_GLOBALS=("node" "nvm" "npm" "npx" "yarn" "pnpm")
+# Add any globally installed node packages if nvm is installed
+if [[ -d "$NVM_DIR/versions/node" ]]; then
+    NODE_GLOBALS+=($(find "$NVM_DIR/versions/node" -maxdepth 3 -type l -wholename '*/bin/*' 2>/dev/null | xargs -n1 basename 2>/dev/null | sort | uniq))
+fi
+
+load_nvm() {
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+}
+
+for cmd in "${NODE_GLOBALS[@]}"; do
+    eval "${cmd}(){ unset -f ${NODE_GLOBALS[*]}; load_nvm; ${cmd} \$@; }"
+done
 # End -------------------------
 #  zprof
