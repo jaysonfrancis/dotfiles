@@ -54,9 +54,13 @@ setopt HIST_SAVE_NO_DUPS         # Do not write a duplicate event to the history
 # setopt SHARE_HISTORY             # Share history between all sessions.
 
 
-# --- terminall arrow keys ---
+# --- terminal arrow keys ---
 bindkey '[C' forward-word
 bindkey '[D' backward-word
+
+# --- clear screen alternative (since C-l is used by tmux navigator) ---
+bindkey '^O' clear-screen        # C-o for clear screen
+# Fallback: Use tmux prefix + C-l (` + C-l locally, ~ + C-l remotely)
 
 # Enable menu-style tab completion
 zstyle ':completion:*' menu select

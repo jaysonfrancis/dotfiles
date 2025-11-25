@@ -16,6 +16,11 @@ return {
 			formatters_by_ft = {
 				python = { "ruff_fix", "ruff_format" },
 				rust = { "rustfmt" },
+				vue = { "biome" },
+				typescript = { "biome" },
+				typescriptreact = { "biome" },
+				javascript = { "biome" },
+				javascriptreact = { "biome" },
 			},
 		},
 	},

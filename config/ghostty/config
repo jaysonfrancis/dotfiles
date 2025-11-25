@@ -8,8 +8,11 @@ theme = "Argonaut"
 
 # background = 282c34
 # foreground = ffffff
-background-opacity = 0.90
-background-blur-radius = 100
+background-opacity = 1
+background-blur-radius = 10
+background-image=~/.dotfiles/graphics/w2.jpg
+background-image-fit=stretch
+background-image-opacity=0.2
 
 cursor-color = cell-foreground
 cursor-color = #A1078D
@@ -30,6 +33,7 @@ keybind = ctrl+d=new_split:right
 keybind = ctrl+z=unbind
 keybind = global:cmd+backquote=toggle_visibility
 keybind = shift+enter=text:\x1b\r
+# keybind = cmd+`=text:\x1b]5255;tmux-remote-prefix\x07
 
 # shell integration
 shell-integration = zsh
@@ -39,7 +43,9 @@ link-url = true
 # https://ghostty.org/docs/config/reference#shell-integration-features
 shell-integration-features = no-title, no-cursor, ssh-env
 
-macos-titlebar-style=tabs
+macos-non-native-fullscreen=padded-notch
+macos-titlebar-style=hidden 
+# tabs
 macos-auto-secure-input=true
 mouse-hide-while-typing=true
 macos-window-shadow=false
@@ -47,6 +53,8 @@ mouse-scroll-multiplier = 2
 
 clipboard-trim-trailing-spaces=true
 copy-on-select = clipboard
+clipboard-read = allow
+clipboard-write = allow
 
 title = " "
 

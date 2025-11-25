@@ -41,8 +41,12 @@ end
 vim.keymap.set('n', 'q"', surround_in_quotes, { noremap = true, silent = true })
 
 -- Map <leader-j/k> to go to the next/prev method start
-nvim_set_km("n", "<C-j>", ":normal ]mzz<CR>", { noremap = true, silent = true })
-nvim_set_km("n", "<C-k>", ":normal [mzz<CR>", { noremap = true, silent = true })
+-- NOTE: Commented out for tmux navigator - experiment with ]m/[m or <leader>mj/<leader>mk
+-- nvim_set_km("n", "<C-j>", ":normal ]mzz<CR>", { noremap = true, silent = true })
+-- nvim_set_km("n", "<C-k>", ":normal [mzz<CR>", { noremap = true, silent = true })
+
+-- Tmux Navigator keymaps are defined in lua/plugins/tmux-navigator.lua
+-- <C-h/j/k/l> for seamless tmux pane and vim split navigation
 
 -- Close the buffer
 nvim_set_km("n", "<leader>q", ":bp|bd #<CR>", { noremap = true, silent = true })
