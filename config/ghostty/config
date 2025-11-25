@@ -25,10 +25,15 @@ font-thicken = true
 font-size = 14
 bold-color = bright
 
-# Keybindings
 # keybind = ctrl+z=close_surface # JF: what's this
-# keybind = global:cmd+backquote=toggle_quick_terminal
 
+# quick terminal
+keybind = global:shift+cmd+backquote=toggle_quick_terminal
+quick-terminal-animation-duration=0.1
+quick-terminal-autohide=true
+quick-terminal-screen=main
+
+# Keybindings
 keybind = ctrl+d=new_split:right
 keybind = ctrl+z=unbind
 keybind = global:cmd+backquote=toggle_visibility
@@ -65,6 +70,9 @@ window-height = 37
 window-width = 135
 window-colorspace = "display-p3"
 confirm-close-surface = false
+# fullscreen=true
+maximize=true
+window-save-state=always
 
 auto-update = download
 auto-update-channel = tip
