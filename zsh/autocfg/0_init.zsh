@@ -68,8 +68,9 @@ setopt HIST_SAVE_NO_DUPS         # Do not write a duplicate event to the history
 bindkey '[C' forward-word
 bindkey '[D' backward-word
 
-# --- clear screen alternative (since C-l is used by tmux navigator) ---
+# --- clear screen alternative ---
 bindkey '^O' clear-screen        # C-o for clear screen
+bindkey '^/' clear-screen        # C-l for clear screen
 # Fallback: Use tmux prefix + C-l (` + C-l locally, ~ + C-l remotely)
 
 # Enable menu-style tab completion

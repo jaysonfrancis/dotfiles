@@ -17,34 +17,35 @@ apps=(
     grep
     isort
     black
-    ruff                # Linter for Python
-    luarocks            # Lua package manager
-    shfmt               # Shell script formatter
+    ruff     # Linter for Python
+    luarocks # Lua package manager
+    shfmt    # Shell script formatter
     wget
-    bat                 # A cat clone with syntax highlighting
-    fzf                 # Command-line fuzzy finder
-    clang-format        # C/C++/Objective-C source code formatter
-    tmux                # Terminal multiplexer
-    pylint              # Python linter
-    uv                  # Toolkit for developing with Ruff
-    llm                 # Large Language Model tools
-    zsh-syntax-highlighting  # Zsh plugin for syntax highlighting
-    zsh-autosuggestions      # Zsh plugin for command autosuggestions
-    zoxide                  # A smarter cd command
-    eza                     # Modern replacement for 'ls'
-    tlrc                    # Help utility
-    diff-so-fancy           # Better git diff output
-    neofetch                # System information tool
-    jq                      # JSON parser
+    bat                        # A cat clone with syntax highlighting
+    fzf                        # Command-line fuzzy finder
+    clang-format               # C/C++/Objective-C source code formatter
+    tmux                       # Terminal multiplexer
+    pylint                     # Python linter
+    uv                         # Toolkit for developing with Ruff
+    llm                        # Large Language Model tools
+    zsh-syntax-highlighting    # Zsh plugin for syntax highlighting
+    zsh-autosuggestions        # Zsh plugin for command autosuggestions
+    zoxide                     # A smarter cd command
+    eza                        # Modern replacement for 'ls'
+    tlrc                       # Help utility
+    diff-so-fancy              # Better git diff output
+    neofetch                   # System information tool
+    jq                         # JSON parser
     koekeishiya/formulae/skhd  # Key-binding daemon for macOS
     koekeishiya/formulae/yabai # Tiling window manager for macOS
-    cloc   # count lines of code
+    cloc                       # count lines of code
+    sesh                       # tmux sesh manager
 )
 
 # Install fonts (requires --cask)
 brew tap homebrew/cask-fonts
 casks=(
-    font-hack-nerd-font   # Nerd font with programming ligatures
+    font-hack-nerd-font # Nerd font with programming ligatures
 )
 
 # Install applications
