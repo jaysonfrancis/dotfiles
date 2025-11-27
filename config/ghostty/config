@@ -8,11 +8,11 @@ theme = "Argonaut"
 
 # background = 282c34
 # foreground = ffffff
-background-opacity = 1
+background-opacity = 0.95
 background-blur-radius = 10
 background-image=~/.dotfiles/graphics/w2.jpg
 background-image-fit=stretch
-background-image-opacity=0.2
+background-image-opacity=0.1
 
 cursor-color = cell-foreground
 cursor-color = #A1078D
@@ -28,8 +28,8 @@ bold-color = bright
 # keybind = ctrl+z=close_surface # JF: what's this
 
 # quick terminal
-keybind = global:shift+cmd+backquote=toggle_quick_terminal
-quick-terminal-animation-duration=0.1
+# keybind = global:shift+cmd+backquote=toggle_quick_terminal
+quick-terminal-animation-duration=0
 quick-terminal-autohide=true
 quick-terminal-screen=main
 
@@ -37,8 +37,10 @@ quick-terminal-screen=main
 keybind = ctrl+d=new_split:right
 keybind = ctrl+z=unbind
 keybind = global:cmd+backquote=toggle_visibility
+# keybind = global:cmd+escape=toggle_visibility
+
 keybind = shift+enter=text:\x1b\r
-# keybind = cmd+`=text:\x1b]5255;tmux-remote-prefix\x07
+keybind = cmd+`=text:\x1b]5255;tmux-remote-prefix\x07
 
 # shell integration
 shell-integration = zsh
@@ -50,6 +52,7 @@ shell-integration-features = no-title, no-cursor, ssh-env
 
 macos-non-native-fullscreen=padded-notch
 macos-titlebar-style=hidden 
+
 # tabs
 macos-auto-secure-input=true
 mouse-hide-while-typing=true

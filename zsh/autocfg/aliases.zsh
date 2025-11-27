@@ -12,8 +12,8 @@ alias gP="git push" #
 alias gs="git status" # git st
 alias gd="git diff"
 alias ga="git add -u ."
-alias gspush="git stash push"
-alias gspull="git stash pop"
+alias gsP="git stash push"
+alias gsp="git stash pop"
 
 alias vim="nvim"
 alias zz="vim ~/.zshrc"
@@ -34,8 +34,7 @@ alias tmxa="tmux -CC attach -t main"
 alias cat="bat"
 
 # Edit files
-alias as="nvim ~/.dotfiles/zsh/autocfg/aliases.zsh" # <this file>
-alias v='nvim $(fzf --preview="bat --color=always {}")'
+alias aliases="nvim ~/.dotfiles/zsh/autocfg/aliases.zsh" # <this file>
 
 # Move to directories
 alias gdrive="cd ~/Google\ Drive/My\ Drive/"
@@ -49,4 +48,12 @@ alias obs="cd ~/Obs; vim"
 
 alias jup="jupyter lab --autoreload --no-browser . &!"
 
-alias t1="open -na Ghostty --args --theme='Blue Matrix'"
+alias t1="open -na Ghostty --args --theme='Blue Matrix' --keybind=shift+cmd+backquote=toggle_visibility"
+
+xx() {
+  sesh connect "$(sesh list | fzf --preview 'bat --color=always {}')"
+}
+
+sj() {
+  nvim "$(fzf --preview 'bat --color=always {}')"
+}
