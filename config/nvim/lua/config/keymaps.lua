@@ -31,14 +31,14 @@ nvim_set_km("v", "<leader>y", '"+y', { noremap = true, silent = true })
 
 -- wrap text with quotes (i.e 3q" will wrap 3 words in quotes)
 local function surround_in_quotes()
-  local count = vim.v.count1 -- defaults to 1 if no count is given
-  vim.cmd('normal! v' .. count .. 'e')      -- visually select N words
-  vim.cmd('normal! "zy')                    -- yank selection into register z
-  vim.cmd('normal! gv"_d')                  -- delete the selected text (without yanking again)
-  vim.cmd('normal! i"' .. vim.fn.getreg('z') .. '"') -- insert quotes around it
-  vim.cmd('stopinsert')                     -- return to normal mode
+	local count = vim.v.count1 -- defaults to 1 if no count is given
+	vim.cmd("normal! v" .. count .. "e") -- visually select N words
+	vim.cmd('normal! "zy') -- yank selection into register z
+	vim.cmd('normal! gv"_d') -- delete the selected text (without yanking again)
+	vim.cmd('normal! i"' .. vim.fn.getreg("z") .. '"') -- insert quotes around it
+	vim.cmd("stopinsert") -- return to normal mode
 end
-vim.keymap.set('n', 'q"', surround_in_quotes, { noremap = true, silent = true })
+vim.keymap.set("n", 'q"', surround_in_quotes, { noremap = true, silent = true })
 
 -- Map <leader-j/k> to go to the next/prev method start
 -- NOTE: Commented out for tmux navigator - experiment with ]m/[m or <leader>mj/<leader>mk

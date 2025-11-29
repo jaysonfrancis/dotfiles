@@ -5,7 +5,14 @@ return {
 		-- your configuration comes here
 		-- or leave it empty to use the default settings
 		-- refer to the configuration section below
-
+		-- HACK:
+		-- WARN:
+		-- PERF:
+		-- NOTE:
+		-- TEST:
+		-- ACTION:
+		-- REWARD:
+		-- STATE:
 		keywords = {
 			FIX = {
 				icon = " ", -- icon used for the sign, and in search results
