@@ -21,7 +21,7 @@ source $ZSH/oh-my-zsh.sh
 
 # NVM Lazy Loading - only load when node/npm commands are used
 export NVM_DIR="$HOME/.nvm"
-declare -a NODE_GLOBALS=("node" "nvm" "npm" "npx" "yarn" "pnpm")
+declare -a NODE_GLOBALS=("node" "nvm" "npm" "npx" "yarn" "pnpm", "nvim")
 # Add any globally installed node packages if nvm is installed
 if [[ -d "$NVM_DIR/versions/node" ]]; then
     NODE_GLOBALS+=($(find "$NVM_DIR/versions/node" -maxdepth 3 -type l -wholename '*/bin/*' 2>/dev/null | xargs -n1 basename 2>/dev/null | sort | uniq))
@@ -33,7 +33,11 @@ load_nvm() {
 }
 
 for cmd in "${NODE_GLOBALS[@]}"; do
-    eval "${cmd}(){ unset -f ${NODE_GLOBALS[*]}; load_nvm; ${cmd} \$@; }"
+eval "${cmd}() {
+  unset -f ${NODE_GLOBALS[*]} 2>/dev/null
+  load_nvm
+  command ${cmd} \"\$@\"
+}"
 done
 # End -------------------------
 #  zprof
