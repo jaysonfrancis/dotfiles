@@ -128,5 +128,6 @@
     "llama-vscode.tool_custom_eval_tool_enabled": false,
     "llama-vscode.tool_llama_vscode_help_enabled": false,
     "llama-vscode.enabled": false,
-    "editor.wordWrap": "on"
+    "editor.wordWrap": "on",
+    "claudeCode.preferredLocation": "panel"
 }

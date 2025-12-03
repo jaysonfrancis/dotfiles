@@ -4,13 +4,14 @@
 # theme = tokyonight
 # theme = ayu
 # theme = "Popping and Locking"
-theme = "Argonaut"
+# theme = "Argonaut"
+theme = "Synthwave"
 
 # background = 282c34
 # foreground = ffffff
 background-opacity = 0.95
 background-blur-radius = 10
-background-image=~/.dotfiles/graphics/w2.jpg
+background-image=~/.dotfiles/graphics/w1.jpg
 background-image-fit=stretch
 background-image-opacity=0.1
 
@@ -51,6 +52,7 @@ link-url = true
 shell-integration-features = no-title, no-cursor, ssh-env
 
 macos-non-native-fullscreen=padded-notch
+# padded-notch
 macos-titlebar-style=hidden 
 
 # tabs
