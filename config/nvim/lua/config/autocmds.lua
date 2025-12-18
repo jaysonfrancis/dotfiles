@@ -38,3 +38,10 @@ vim.api.nvim_create_autocmd({ "InsertLeave" }, {
 		vim.opt.relativenumber = true
 	end,
 })
+
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+	pattern = "*.md.jinja",
+	callback = function()
+		vim.bo.filetype = "markdown.jinja"
+	end,
+})

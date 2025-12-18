@@ -40,6 +40,7 @@ apps=(
     koekeishiya/formulae/yabai # Tiling window manager for macOS
     cloc                       # count lines of code
     sesh                       # tmux sesh manager
+    imagemagick                # ghostty to convet images
 )
 
 # Install fonts (requires --cask)

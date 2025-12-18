@@ -50,10 +50,14 @@ alias jup="jupyter lab --autoreload --no-browser . &!"
 
 alias t1="open -na Ghostty --args --theme='Blue Matrix' --keybind=shift+cmd+backquote=toggle_visibility"
 
-xx() {
-  sesh connect "$(sesh list | fzf --preview 'bat --color=always {}')"
+sj() {
+  if [[ "$1" == "." ]]; then
+    sesh connect "$(basename "$PWD")"
+  else
+    sesh connect "$(sesh list | fzf --preview 'bat --color=always {}')"
+  fi
 }
 
-sj() {
+nsj() {
   nvim "$(fzf --preview 'bat --color=always {}')"
 }

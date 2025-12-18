@@ -8,6 +8,11 @@ local nvim_set_km = vim.api.nvim_set_keymap
 -- nvim_set_km("v", "<//>", ":CommentToggle<CR>", { noremap = true, silent = true })
 -- nvim_set_km("n", "<//>", ":CommentToggle<CR>", { noremap = true, silent = true })
 
+-- diff active tabs
+map("n", "<leader>gw", function()
+	vim.cmd("windo diffthis")
+end, { noremap = true, desc = "Git diff (w)indows" })
+
 -- reveal active file in neotree
 map("n", "<leader>fr", ":Neotree reveal<CR>", {})
 

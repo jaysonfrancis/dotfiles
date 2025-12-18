@@ -1,0 +1,4 @@
+claude-code
+corepack
+neovim
+npm

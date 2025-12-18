@@ -3,7 +3,7 @@
     "editor.lineHeight": 22,
     "editor.lineNumbers": "relative",
     "vim.smartRelativeLine": true,
-    "editor.hover.enabled": false,
+    "editor.hover.enabled": "off",
     "terminal.external.osxExec": "iTerm.app",
     "editor.minimap.enabled": false,
     "[python]": {
@@ -11,13 +11,6 @@
     },
     "editor.accessibilityPageSize": 40,
     "editor.inlineSuggest.enabled": true,
-    "github.copilot.enable": {
-        "*": false,
-        "plaintext": false,
-        "markdown": true,
-        "scminput": false
-    },
-    "github.copilot.advanced": {},
     "files.autoSave": "onFocusChange",
     "files.autoSaveDelay": 5,
     "terminal.integrated.inheritEnv": false,
@@ -85,8 +78,7 @@
     },
     "editor.semanticTokenColorCustomizations": {},
     "keyboard.touchbar.enabled": false,
-    "workbench.tree.indent": 30,
-    "workbench.tree.renderIndentGuides": "always",
+    "workbench.tree.indent": 14,
     "editor.mouseWheelZoom": true,
     "workbench.colorCustomizations": {
         "tree.indentGuidesStroke": "#008070",
@@ -110,8 +102,7 @@
         "asvetliakov.vscode-neovim": 1
     },
     "python.analysis.typeCheckingMode": "basic",
-    "workbench.colorTheme": "Winter is Coming (Dark Blue - No Italics)",
-    // "notebook.output.fontFamily": "JetBrains Mono, Consolas, 'Courier New', monospace",
+    "notebook.output.fontFamily": "JetBrains Mono, Consolas, 'Courier New', monospace",
     "notebook.output.fontSize": 14,
     "notebook.output.lineHeight": 1.5,
     "llama-vscode.rag_enabled": false,
@@ -129,5 +120,19 @@
     "llama-vscode.tool_llama_vscode_help_enabled": false,
     "llama-vscode.enabled": false,
     "editor.wordWrap": "on",
-    "claudeCode.preferredLocation": "panel"
+    "claudeCode.preferredLocation": "panel",
+    "llama-vscode.ask_upgrade_llamacpp_hours": 72000,
+    "focusedFolder.rememberLastFocus": true,
+    "todohighlight.isEnable": true,
+    "todohighlight.defaultStyle": {
+            "color": "red",
+            "backgroundColor": "#ffab00",
+            "overviewRulerColor": "#ffab00",
+            "cursor": "pointer",
+            "border": "1px solid #eee",
+            "borderRadius": "2px",
+            "isWholeLine": false,
+            //other styling properties goes here ... 
+        },
+        "workbench.colorTheme": "Gruvbox ish Dark Hard",
 }

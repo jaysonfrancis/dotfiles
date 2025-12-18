@@ -63,3 +63,10 @@ opt.foldlevelstart = 99
 -- set foldopen-=block
 
 opt.foldopen:remove("block")
+
+-- ftdetect/md_jinja.lua
+-- vim.filetype.add({
+-- 	extension = {
+-- 		["md.jinja"] = "markdown.jinja",
+-- 	},
+-- })
