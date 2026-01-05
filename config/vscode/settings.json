@@ -15,9 +15,12 @@
     "files.autoSaveDelay": 5,
     "terminal.integrated.inheritEnv": false,
     "files.exclude": {
+        "**./pytest_cache": true,
         "**/__pycache__/": true,
         "**/.ipynb_checkpoints": true,
-        "**./pytest_cache": true
+        "**/.venv/**": true,
+        "**/*egg-info**": true,
+        "**/uv.lock**": true
     },
     "git.ignoreLegacyWarning": true,
     "python.languageServer": "Pylance",
@@ -134,5 +137,5 @@
             "isWholeLine": false,
             //other styling properties goes here ... 
         },
-        "workbench.colorTheme": "Gruvbox ish Dark Hard",
+        "workbench.colorTheme": "Default Dark+",
 }

@@ -9,7 +9,7 @@ theme = "Argonaut"
 
 # background = 282c34
 # foreground = ffffff
-background-opacity = 0.95
+background-opacity = 0.99
 background-blur-radius = 10
 background-image=~/.dotfiles/graphics/w1.jpg
 background-image-fit=stretch
