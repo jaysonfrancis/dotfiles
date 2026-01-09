@@ -33,6 +33,9 @@ alias tmx="tmux -CC new -A -s main"
 alias tmxa="tmux -CC attach -t main"
 alias cat="bat"
 
+# update brew
+alias brewup='brew update && brew upgrade && brew upgrade --cask --greedy && brew cleanup'
+
 # Edit files
 alias aliases="nvim ~/.dotfiles/zsh/autocfg/aliases.zsh" # <this file>
 
