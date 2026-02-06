@@ -83,31 +83,32 @@
     "keyboard.touchbar.enabled": false,
     "workbench.tree.indent": 14,
     "editor.mouseWheelZoom": true,
-    "workbench.colorCustomizations": {
-        "tree.indentGuidesStroke": "#008070",
-        "notebook.focusedEditorBorder": "#f30a",
-        "notebook.focusedRowBorder": "#ff0",
-        "notebook.focusedCellBorder": "#f30a",
-        "notebook.cellEditorBackground": "#091c2f",
-        "notebook.cellToolbarSeparator": "#150303",
-        "notebook.outputContainerBackgroundColor": "#1b3754"
-    },
-    "notebook.output.textLineLimit": 50,
+    // "workbench.colorCustomizations": {
+    //     "tree.indentGuidesStroke": "#008070",
+    //     "notebook.focusedEditorBorder": "#f30a",
+    //     "notebook.focusedRowBorder": "#ff0",
+    //     "notebook.focusedCellBorder": "#f30a",
+    //     "notebook.cellEditorBackground": "#091c2f",
+    //     "notebook.cellToolbarSeparator": "#150303",
+    //     "notebook.outputContainerBackgroundColor": "#1b3754"
+    // },
+    // "notebook.output.textLineLimit": 50,
+    // "workbench.iconTheme": "vscode-icons",
+    // "notebook.output.fontFamily": "JetBrains Mono, Consolas, 'Courier New', monospace",
+    // "notebook.output.fontSize": 14,
+    // "notebook.output.lineHeight": 1.5,
+
     "vim.enableNeovim": true,
     "vscode-neovim.neovimExecutablePaths.darwin" : "/usr/local/bin/nvim",
     "vscode-neovim.neovimInitVimPaths.darwin": "$HOME/.dotfiles/config/nvim/init.lua",
     "explorer.sortOrder": "modified",
     "remote.autoForwardPortsSource": "hybrid",
-    "workbench.iconTheme": "vscode-icons",
     "telemetry.telemetryLevel": "off",
     "jupyter.askForKernelRestart": false,
     "extensions.experimental.affinity": {
         "asvetliakov.vscode-neovim": 1
     },
     "python.analysis.typeCheckingMode": "basic",
-    "notebook.output.fontFamily": "JetBrains Mono, Consolas, 'Courier New', monospace",
-    "notebook.output.fontSize": 14,
-    "notebook.output.lineHeight": 1.5,
     "llama-vscode.rag_enabled": false,
     "llama-vscode.tool_run_terminal_command_enabled": false,
     "llama-vscode.tool_search_source_enabled": false,
@@ -137,5 +138,13 @@
             "isWholeLine": false,
             //other styling properties goes here ... 
         },
-        "workbench.colorTheme": "Default Dark+",
+        "workbench.colorTheme": "Gruvbox Dark Hard",
+        "llama-vscode.tool_update_todo_list_enabled": false,
+        "json.schemas": [
+            
+        ],
+        "workbench.settings.applyToAllProfiles": [
+
+        
+        ],
 }
