@@ -1,5 +1,8 @@
+[include]
+    path = ~/.gitconfig-local
+
 [pull]
-    rebase = true #
+    rebase = true
 
 [apply]
   ignorewhitespace = change
@@ -8,8 +11,8 @@
 [core]
 	autocrlf = input
     pager = diff-so-fancy | less --tabs=4 -RF
-    editor = vim
-	excludesFiles = ~/.dotfiles/config/gitconfigs/.gitignore
+    editor = nvim
+	excludesFile = ~/.dotfiles/config/gitconfigs/.gitignore
 
 [filter "lfs"]
 	clean = git-lfs clean -- %f
@@ -65,12 +68,5 @@
     defaultBranch = main
 
 
-[credential "https://github.com"]
-	helper =
-    helper = !gh auth git-credential
-
-[credential "https://gist.github.com"]
-	helper =
-    helper = !gh auth git-credential
 [push]
 	autoSetupRemote = true
