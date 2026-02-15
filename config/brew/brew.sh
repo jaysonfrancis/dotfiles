@@ -43,6 +43,8 @@ apps=(
     imagemagick                # ghostty to convet images
 )
 
+# brew install --cask nikitabobko/tap/aerospace
+
 # Install fonts (requires --cask)
 brew tap homebrew/cask-fonts
 casks=(
