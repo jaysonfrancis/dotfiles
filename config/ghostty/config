@@ -53,7 +53,7 @@ shell-integration-features = no-title, no-cursor, ssh-env
 
 macos-non-native-fullscreen=padded-notch
 # padded-notch
-macos-titlebar-style=hidden 
+macos-titlebar-style=hidden
 
 # tabs
 macos-auto-secure-input=true

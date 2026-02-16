@@ -1,0 +1,60 @@
+# Core CLI
+brew "bat"
+brew "cmake"
+brew "cloc"
+brew "eza"
+brew "fd"
+brew "ffmpeg"
+brew "fzf"
+brew "git"
+brew "grep"
+brew "imagemagick"
+brew "jq"
+brew "ripgrep"
+brew "tlrc"
+brew "tmux"
+brew "wget"
+brew "zoxide"
+
+# Shell
+brew "zsh-autosuggestions"
+brew "zsh-syntax-highlighting"
+
+# Git
+brew "diff-so-fancy"
+
+# Python
+brew "ruff"
+brew "uv"
+
+# Lua
+brew "luarocks"
+brew "stylua"
+
+# Formatters
+brew "clang-format"
+brew "shfmt"
+
+# Tmux
+brew "sesh"
+
+# AI
+brew "llm"
+
+# System info
+brew "fastfetch"
+
+# macOS only
+if OS.mac?
+  tap "nikitabobko/tap"
+  cask "aerospace"
+
+  cask "font-hack-nerd-font"
+  cask "font-symbols-only-nerd-font"
+end
+
+# Yazi dependencies
+brew "yazi"
+brew "sevenzip"
+brew "poppler"
+brew "resvg"
