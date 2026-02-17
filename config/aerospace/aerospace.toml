@@ -9,7 +9,8 @@ config-version = 2
 # Available commands : https://nikitabobko.github.io/AeroSpace/commands
 after-startup-command = ['exec-and-forget sketchybar']
 exec-on-workspace-change = [
-    '/bin/bash', '-c',
+    '/bin/bash',
+    '-c',
     'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE PREV_WORKSPACE=$AEROSPACE_PREV_WORKSPACE',
 ]
 
@@ -53,13 +54,7 @@ automatically-unhide-macos-hidden-apps = false
 # even when they are invisible.
 # This config version is only available since 'config-version = 2'
 # Fallback value (if you omit the key): persistent-workspaces = []
-persistent-workspaces = [
-    "1",
-    "2",
-    "3",
-    "4",
-    "5",
-]
+persistent-workspaces = ["1", "2", "3", "4", "5"]
 
 # A callback that runs every time binding mode changes
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
@@ -91,13 +86,16 @@ preset = 'qwerty'
 inner.horizontal = 0
 inner.vertical = 0
 outer.bottom = 0
-outer.top = [
-  { monitor."built-in" = 40 },
-  { monitor."main" = 40 },
-  40
-]
+outer.top = [{ monitor."built-in" = 0 }, 40]
 outer.left = 0
 outer.right = 0
+
+[workspace-to-monitor-force-assignment]
+1 = 'built-in'
+2 = 'built-in'
+3 = 'built-in'
+4 = 'secondary'
+5 = 'secondary'
 
 
 # 'main' binding mode declaration
