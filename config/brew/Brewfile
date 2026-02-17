@@ -49,6 +49,9 @@ if OS.mac?
   tap "nikitabobko/tap"
   cask "aerospace"
 
+  tap "FelixKratz/formulae"
+  brew "sketchybar"
+
   cask "font-hack-nerd-font"
   cask "font-symbols-only-nerd-font"
 end

@@ -7,7 +7,11 @@ config-version = 2
 
 # You can use it to add commands that run after AeroSpace startup.
 # Available commands : https://nikitabobko.github.io/AeroSpace/commands
-after-startup-command = []
+after-startup-command = ['exec-and-forget sketchybar']
+exec-on-workspace-change = [
+    '/bin/bash', '-c',
+    'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE PREV_WORKSPACE=$AEROSPACE_PREV_WORKSPACE',
+]
 
 # Start AeroSpace at login
 start-at-login = false
@@ -55,32 +59,6 @@ persistent-workspaces = [
     "3",
     "4",
     "5",
-    "6",
-    "7",
-    "8",
-    "9",
-    "A",
-    "B",
-    "C",
-    "D",
-    "E",
-    "F",
-    "G",
-    "I",
-    "M",
-    "N",
-    "O",
-    "P",
-    "Q",
-    "R",
-    "S",
-    "T",
-    "U",
-    "V",
-    "W",
-    "X",
-    "Y",
-    "Z",
 ]
 
 # A callback that runs every time binding mode changes
@@ -101,13 +79,26 @@ preset = 'qwerty'
 #                 Monitor pattern is the same as for 'workspace-to-monitor-force-assignment'.
 #                 See:
 #                 https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
+# [gaps]
+# inner.horizontal = 0
+# inner.vertical = 0
+# outer.left = 0
+# outer.bottom = 0
+# outer.top = 40
+# outer.right = 0
+
 [gaps]
 inner.horizontal = 0
 inner.vertical = 0
-outer.left = 0
 outer.bottom = 0
-outer.top = 0
+outer.top = [
+  { monitor."built-in" = 40 },
+  { monitor."main" = 40 },
+  40
+]
+outer.left = 0
 outer.right = 0
+
 
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
