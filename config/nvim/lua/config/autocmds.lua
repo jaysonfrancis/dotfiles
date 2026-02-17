@@ -45,3 +45,11 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 		vim.bo.filetype = "markdown.jinja"
 	end,
 })
+
+vim.api.nvim_create_autocmd({ "FileType" }, {
+	pattern = { "markdown", "jinja", "jinja2", "htmldjango", "markdown.jinja" },
+	callback = function()
+		vim.b.autoformat = false
+		vim.diagnostic.enable(false)
+	end,
+})
