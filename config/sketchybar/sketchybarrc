@@ -39,7 +39,7 @@ sketchybar --add event aerospace_workspace_change
 WORKSPACES=("1" "2" "3" "4" "5")
 for sid in "${WORKSPACES[@]}"
 do
-  sketchybar --add item space."$sid" left \
+  sketchybar --add item space."$sid" center \
              --subscribe space."$sid" aerospace_workspace_change \
              --set space."$sid" \
              icon="$sid" \
