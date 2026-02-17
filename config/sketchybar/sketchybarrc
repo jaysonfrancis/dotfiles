@@ -79,8 +79,7 @@ sketchybar --add item spotify right \
                          icon=󰓇 \
                          icon.color=0xff1DB954 \
                          icon.font="Hack Nerd Font:Bold:22.0" \
-                         label.max_chars=30 \
-                         scroll_texts=on \
+                         label.drawing=off \
                          script="$PLUGIN_DIR/spotify.sh" \
                          click_script="osascript -e 'tell application \"Spotify\" to playpause'" \
            --add item spotify.next right \

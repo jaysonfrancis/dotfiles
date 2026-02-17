@@ -94,7 +94,7 @@ outer.right = 0
 1 = 'built-in'
 2 = 'built-in'
 3 = 'built-in'
-4 = 'secondary'
+4 = 'built-in'
 5 = 'secondary'
 
 
@@ -246,12 +246,12 @@ alt-ctrl-right = ['join-with right', 'mode main']
 
 [[on-window-detected]]
 if.app-id = 'com.microsoft.Outlook'
-run = 'layout floating'
+run = ['layout floating', 'move-node-to-workspace 5']
 
 [[on-window-detected]]
 if.app-id = 'com.apple.MobileSMS'
-run = 'layout floating'
+run = ['layout floating', 'move-node-to-workspace 5']
 
 [[on-window-detected]]
 if.app-id = 'com.spotify.client'
-run = 'layout floating'
+run = ['layout floating', 'move-node-to-workspace 5']
