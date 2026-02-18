@@ -253,5 +253,5 @@ if.app-id = 'com.apple.MobileSMS'
 run = ['layout floating', 'move-node-to-workspace 4']
 
 [[on-window-detected]]
-if.app-id = 'com.spotify.client'
+if.app-id = 'com.apple.Music'
 run = ['layout floating']        # , 'move-node-to-workspace 5']

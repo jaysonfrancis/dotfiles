@@ -74,22 +74,22 @@ sketchybar --add item chevron left \
 # volume is registered. More info about the event system can be found here:
 # https://felixkratz.github.io/SketchyBar/config/events
 
-sketchybar --add item spotify right \
-           --set spotify update_freq=5 \
-                         icon=󰓇 \
-                         icon.color=0xff1DB954 \
+sketchybar --add item music right \
+           --set music update_freq=5 \
+                         icon=󰎆 \
+                         icon.color=0xffFC3C44 \
                          icon.font="Hack Nerd Font:Bold:22.0" \
                          label.drawing=off \
-                         script="$PLUGIN_DIR/spotify.sh" \
-                         click_script="osascript -e 'tell application \"Spotify\" to playpause'" \
-           --add item spotify.next right \
-           --set spotify.next \
+                         script="$PLUGIN_DIR/music.sh" \
+                         click_script="osascript -e 'tell application \"Music\" to playpause'" \
+           --add item music.next right \
+           --set music.next \
                          icon=󰒭 \
                          icon.font="Hack Nerd Font:Bold:20.0" \
-                         icon.color=0xff1DB954 \
+                         icon.color=0xffFC3C44 \
                          label.drawing=off \
                          drawing=off \
-                         click_script="osascript -e 'tell application \"Spotify\" to next track'" \
+                         click_script="osascript -e 'tell application \"Music\" to next track'" \
            --add item clock right \
            --set clock update_freq=10 icon=  script="$PLUGIN_DIR/clock.sh" \
            --add item battery right \
