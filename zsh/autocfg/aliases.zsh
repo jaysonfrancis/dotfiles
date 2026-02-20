@@ -2,7 +2,7 @@
 
 alias LL="eza -1lF --icons=always --color --long --git -s modified --total-size -o"
 alias l="eza --color -l --icons=always --no-user --no-permissions -s type -s modified --group-directories-first -o --time-style relative" # --git
-alias ll="eza --color -l --icons=always --no-permissions -s type -s modified --all --group-directories-first -o --time-style relative" # --git
+alias ll="eza --color -l --icons=always --no-permissions -s type -s name --all --group-directories-first -o --time-style relative" # --git
 alias lt="eza -1T"
 alias ls="ls -l"
 alias rp="realpath" # get abs path
