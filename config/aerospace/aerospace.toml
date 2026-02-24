@@ -54,7 +54,7 @@ automatically-unhide-macos-hidden-apps = false
 # even when they are invisible.
 # This config version is only available since 'config-version = 2'
 # Fallback value (if you omit the key): persistent-workspaces = []
-persistent-workspaces = ["1", "2", "3", "4", "5"]
+persistent-workspaces = ["1", "2", "3", "4", "5", "6"]
 
 # A callback that runs every time binding mode changes
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
@@ -86,16 +86,18 @@ preset = 'qwerty'
 inner.horizontal = 0
 inner.vertical = 0
 outer.bottom = 0
-outer.top = [{ monitor."built-in" = 0 }, 40]
+outer.top = [{ monitor."built-in" = 40 }, 40]
 outer.left = 0
 outer.right = 0
 
 [workspace-to-monitor-force-assignment]
+# Workspaces 1-4 stay on MacBook built-in display
 1 = 'built-in'
 2 = 'built-in'
 3 = 'built-in'
 4 = 'built-in'
-5 = 'secondary'
+# Workspaces 5-6 will automatically use any connected external monitor
+# (no explicit assignment needed - they'll use non-built-in monitor)
 
 
 # 'main' binding mode declaration
