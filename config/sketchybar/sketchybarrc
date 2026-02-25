@@ -13,7 +13,14 @@ PLUGIN_DIR="$CONFIG_DIR/plugins"
 # https://felixkratz.github.io/SketchyBar/config/tricks#color-picker
 # Display options: display=1 (primary), display=2 (secondary), display=all (all monitors)
 
-sketchybar --bar position=top height=40 blur_radius=30 color=0x40000000 display=2
+DISPLAY_COUNT=$(system_profiler SPDisplaysDataType | grep -c "Resolution:")
+if [ "$DISPLAY_COUNT" -gt 1 ]; then
+  BAR_DISPLAY=2
+else
+  BAR_DISPLAY=1
+fi
+
+sketchybar --bar position=top height=40 blur_radius=30 color=0x40000000 display=$BAR_DISPLAY
 
 ##### Changing Defaults #####
 # We now change some default values, which are applied to all further items.
