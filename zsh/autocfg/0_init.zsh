@@ -43,7 +43,9 @@ if [[ ! -f "$ZOXIDE_CACHE" ]] || [[ "$(which zoxide)" -nt "$ZOXIDE_CACHE" ]]; th
     zoxide init zsh > "$ZOXIDE_CACHE" 2>/dev/null
 fi
 [[ -f "$ZOXIDE_CACHE" ]] && source "$ZOXIDE_CACHE"
-alias cd="z"
+
+# Only alias cd to z in interactive shells (not for scripts/tools like Claude)
+[[ -o interactive ]] && alias cd="z"
 
 # Use per-host history and compdump locations
 export HISTFILE="$ZSH/cache/zsh_history_$HOST"
