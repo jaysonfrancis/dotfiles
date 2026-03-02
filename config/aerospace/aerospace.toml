@@ -5,9 +5,12 @@
 # Fallback value (if you omit the key): config-version = 1
 config-version = 2
 
-# You can use it to add commands that run after AeroSpace startup.
-# Available commands : https://nikitabobko.github.io/AeroSpace/commands
+# Run Sketchybar together with AeroSpace
+# sketchybar has a built-in detection of already running process,
+# so it won't be run twice on AeroSpace restart
 after-startup-command = ['exec-and-forget sketchybar --reload']
+
+# Notify Sketchybar about workspace change
 exec-on-workspace-change = [
     '/bin/bash',
     '-c',
@@ -86,7 +89,7 @@ preset = 'qwerty'
 inner.horizontal = 0
 inner.vertical = 0
 outer.bottom = 0
-outer.top = [{ monitor."built-in" = 40 }, 40]
+outer.top = [{ monitor."built-in" = 40 }, 0]
 outer.left = 0
 outer.right = 0
 

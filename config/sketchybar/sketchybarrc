@@ -55,7 +55,7 @@ do
              icon.padding_right=7 \
              background.color=0x40ffffff \
              background.corner_radius=5 \
-             background.height=25 \
+             background.height=20 \
              label.drawing=off \
              script="$PLUGIN_DIR/aerospace.sh" \
              click_script="aerospace workspace $sid"
