@@ -147,4 +147,7 @@
 
         
         ],
+        "[latex]": {
+            "editor.defaultFormatter": "mathematic.vscode-latex"
+        },
 }
