@@ -19,6 +19,9 @@ elif [[ $TERM == "xterm-256color" ]]; then
   fi
 fi
 
+# theme manager for ghostty
+source ~/.config/ghostty/ghostty-ai-themes.zsh
+
 source ~/.dotfiles/private/private_init.zsh
 
 # --- cmd highlighting ---

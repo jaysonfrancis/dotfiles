@@ -1,0 +1,22 @@
+# ghostty-ai-themes configuration
+#
+# Map AI CLI tools to Ghostty themes.
+# Theme names must match Ghostty theme files exactly (case-sensitive).
+#
+# To find available themes, run:
+#   ls /Applications/Ghostty.app/Contents/Resources/ghostty/themes/
+#
+# Copy this file to:
+#   ~/.config/ghostty-ai-themes/config.yml
+
+tools:
+  claude:
+    theme: "Alien Blood"
+  codex:
+    theme: "Black Metal (Burzum)"
+  ssh:
+    theme: "Zenburn"
+  # gemini:
+  #   theme: "Dracula"
+  # aider:
+  #   theme: "Gruvbox Dark"
