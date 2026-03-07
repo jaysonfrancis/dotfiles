@@ -50,6 +50,7 @@ if OS.mac?
   cask "aerospace"
 
   tap "FelixKratz/formulae"
+  brew "borders"
   brew "sketchybar"
 
   cask "font-hack-nerd-font"

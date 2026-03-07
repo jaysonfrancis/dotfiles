@@ -20,7 +20,7 @@ else
   BAR_DISPLAY=1
 fi
 
-sketchybar --bar position=top height=40 blur_radius=30 color=0x40000000 display=$BAR_DISPLAY
+sketchybar --bar position=top height=40 blur_radius=0 color=0x00000000 display=$BAR_DISPLAY
 
 ##### Changing Defaults #####
 # We now change some default values, which are applied to all further items.
@@ -38,6 +38,10 @@ default=(
   icon.padding_right=4
   label.padding_left=4
   label.padding_right=4
+  background.color=0x40000000
+  background.corner_radius=5
+  background.height=26
+  background.drawing=on
 )
 sketchybar --default "${default[@]}"
 
@@ -100,6 +104,12 @@ sketchybar --add item music right \
                          click_script="osascript -e 'tell application \"Music\" to next track'" \
            --add item clock right \
            --set clock update_freq=10 icon=  script="$PLUGIN_DIR/clock.sh" \
+           --add item wifi right \
+           --set wifi update_freq=10 script="$PLUGIN_DIR/wifi.sh" \
+           --subscribe wifi wifi_change \
+           --add item volume right \
+           --set volume script="$PLUGIN_DIR/volume.sh" \
+           --subscribe volume volume_change \
            --add item battery right \
            --set battery update_freq=120 script="$PLUGIN_DIR/battery.sh" \
            --subscribe battery system_woke power_source_change
