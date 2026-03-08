@@ -10,7 +10,7 @@ config-version = 2
 # so it won't be run twice on AeroSpace restart
 after-startup-command = [
     'exec-and-forget sketchybar --reload',
-    'exec-and-forget borders active_color=0xffe1e3e4 inactive_color=0xff494d64 width=5.0',
+    'exec-and-forget borders active_color=0xff7aa2f7 inactive_color=0xff565f89 width=2.0',
 ]
 
 # Notify Sketchybar about workspace change

@@ -1,17 +1,17 @@
-# This is a demo config to showcase some of the most important commands.
-# It is meant to be changed and configured, as it is intentionally kept sparse.
-# For a (much) more advanced configuration example see my dotfiles:
-# https://github.com/FelixKratz/dotfiles
-
 PLUGIN_DIR="$CONFIG_DIR/plugins"
 
-##### Bar Appearance #####
-# Configuring the general appearance of the bar.
-# These are only some of the options available. For all options see:
-# https://felixkratz.github.io/SketchyBar/config/bar
-# If you are looking for other colors, see the color picker:
-# https://felixkratz.github.io/SketchyBar/config/tricks#color-picker
-# Display options: display=1 (primary), display=2 (secondary), display=all (all monitors)
+# Tokyo Night color palette
+BAR_BG=0x00000000        # transparent bar
+ITEM_BG=0xe01a1b26        # item pill background
+ICON_COLOR=0xff7aa2f7     # blue
+LABEL_COLOR=0xffc0caf5    # foreground
+ACCENT=0xff7aa2f7         # blue accent
+HIGHLIGHT=0xffbb9af7      # purple
+GREEN=0xff9ece6a
+RED=0xfff7768e
+YELLOW=0xffe0af68
+CYAN=0xff7dcfff
+SUBTLE=0xff565f89         # muted text
 
 DISPLAY_COUNT=$(system_profiler SPDisplaysDataType | grep -c "Resolution:")
 if [ "$DISPLAY_COUNT" -gt 1 ]; then
@@ -20,77 +20,62 @@ else
   BAR_DISPLAY=1
 fi
 
-sketchybar --bar position=top height=40 blur_radius=0 color=0x00000000 display=$BAR_DISPLAY
-
-##### Changing Defaults #####
-# We now change some default values, which are applied to all further items.
-# For a full list of all available item properties see:
-# https://felixkratz.github.io/SketchyBar/config/items
+sketchybar --bar position=top height=40 blur_radius=0 color=$BAR_BG display=$BAR_DISPLAY
 
 default=(
   padding_left=5
   padding_right=5
   icon.font="Hack Nerd Font:Bold:17.0"
   label.font="Hack Nerd Font:Bold:14.0"
-  icon.color=0xffffffff
-  label.color=0xffffffff
-  icon.padding_left=4
+  icon.color=$ICON_COLOR
+  label.color=$LABEL_COLOR
+  icon.padding_left=8
   icon.padding_right=4
   label.padding_left=4
-  label.padding_right=4
-  background.color=0x40000000
-  background.corner_radius=5
-  background.height=26
+  label.padding_right=8
+  background.color=$ITEM_BG
+  background.corner_radius=8
+  background.height=28
   background.drawing=on
 )
 sketchybar --default "${default[@]}"
 
-##### Adding AeroSpace Workspace Indicators #####
+##### AeroSpace Workspace Indicators #####
 sketchybar --add event aerospace_workspace_change
 
 WORKSPACES=("1" "2" "3" "4" "5")
 for sid in "${WORKSPACES[@]}"
 do
-  sketchybar --add item space."$sid" center \
+  sketchybar --add item space."$sid" left \
              --subscribe space."$sid" aerospace_workspace_change \
              --set space."$sid" \
              icon="$sid" \
-             icon.padding_left=7 \
-             icon.padding_right=7 \
-             background.color=0x40ffffff \
-             background.corner_radius=5 \
-             background.height=20 \
+             icon.color=$SUBTLE \
+             icon.padding_left=10 \
+             icon.padding_right=10 \
+             background.color=$ITEM_BG \
+             background.corner_radius=8 \
+             background.height=28 \
              label.drawing=off \
              script="$PLUGIN_DIR/aerospace.sh" \
              click_script="aerospace workspace $sid"
 done
 
-##### Adding Left Items #####
-# We add some regular items to the left side of the bar, where
-# only the properties deviating from the current defaults need to be set
-
-sketchybar --add item chevron left \
-           --set chevron icon= label.drawing=off \
-           --add item front_app left \
-           --set front_app icon.drawing=off script="$PLUGIN_DIR/front_app.sh" \
+##### Left Items #####
+sketchybar --add item front_app left \
+           --set front_app icon.drawing=off \
+                           label.color=$LABEL_COLOR \
+                           background.color=$ITEM_BG \
+                           script="$PLUGIN_DIR/front_app.sh" \
            --subscribe front_app front_app_switched
 
-##### Adding Right Items #####
-# In the same way as the left items we can add items to the right side.
-# Additional position (e.g. center) are available, see:
-# https://felixkratz.github.io/SketchyBar/config/items#adding-items-to-sketchybar
-
-# Some items refresh on a fixed cycle, e.g. the clock runs its script once
-# every 10s. Other items respond to events they subscribe to, e.g. the
-# volume.sh script is only executed once an actual change in system audio
-# volume is registered. More info about the event system can be found here:
-# https://felixkratz.github.io/SketchyBar/config/events
-
+##### Right Items #####
 sketchybar --add item music right \
            --set music update_freq=5 \
                          icon=󰎆 \
-                         icon.color=0xffFC3C44 \
+                         icon.color=$RED \
                          icon.font="Hack Nerd Font:Bold:22.0" \
+                         label.color=$LABEL_COLOR \
                          label.drawing=off \
                          script="$PLUGIN_DIR/music.sh" \
                          click_script="osascript -e 'tell application \"Music\" to playpause'" \
@@ -98,21 +83,27 @@ sketchybar --add item music right \
            --set music.next \
                          icon=󰒭 \
                          icon.font="Hack Nerd Font:Bold:20.0" \
-                         icon.color=0xffFC3C44 \
+                         icon.color=$RED \
                          label.drawing=off \
                          drawing=off \
                          click_script="osascript -e 'tell application \"Music\" to next track'" \
            --add item clock right \
-           --set clock update_freq=10 icon=  script="$PLUGIN_DIR/clock.sh" \
-           --add item wifi right \
-           --set wifi update_freq=10 script="$PLUGIN_DIR/wifi.sh" \
-           --subscribe wifi wifi_change \
-           --add item volume right \
-           --set volume script="$PLUGIN_DIR/volume.sh" \
+           --set clock update_freq=10 \
+                       icon= \
+                       icon.color=$YELLOW \
+                       label.color=$LABEL_COLOR \
+                       script="$PLUGIN_DIR/clock.sh" \
+--add item volume right \
+           --set volume icon.color=$GREEN \
+                        label.color=$LABEL_COLOR \
+                        script="$PLUGIN_DIR/volume.sh" \
+                        click_script="$PLUGIN_DIR/volume_click.sh" \
            --subscribe volume volume_change \
            --add item battery right \
-           --set battery update_freq=120 script="$PLUGIN_DIR/battery.sh" \
+           --set battery update_freq=120 \
+                         icon.color=$ACCENT \
+                         label.color=$LABEL_COLOR \
+                         script="$PLUGIN_DIR/battery.sh" \
            --subscribe battery system_woke power_source_change
 
-##### Force all scripts to run the first time (never do this in a script) #####
 sketchybar --update
