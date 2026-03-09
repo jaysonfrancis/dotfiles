@@ -15,7 +15,7 @@ tools:
   codex:
     theme: "Black Metal (Burzum)"
   ssh:
-    theme: "Zenburn"
+    theme: "Aardvark Blue"
   # gemini:
   #   theme: "Dracula"
   # aider:
