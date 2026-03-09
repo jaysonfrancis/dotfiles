@@ -59,7 +59,7 @@ _gat_parse_theme() {
 
 # ── Parse config and create wrapper functions ────────────────
 _gat_init() {
-  if [[ ! -f "$_GAT_CONFIG" ]]; then
+  if [[ -n "$SSH_CONNECTION" ]] || [[ ! -f "$_GAT_CONFIG" ]]; then
     return 0
   fi
 

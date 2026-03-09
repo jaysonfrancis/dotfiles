@@ -55,7 +55,7 @@ link-url = true
 
 # Disable Ghostty built-in tab title shell integration
 # https://ghostty.org/docs/config/reference#shell-integration-features
-shell-integration-features = no-title, no-cursor, ssh-env
+shell-integration-features=no-title,no-cursor,ssh-env,ssh-terminfo
 
 macos-non-native-fullscreen=padded-notch
 # padded-notch
