@@ -11,6 +11,7 @@ theme = "Argonaut"
 # foreground = ffffff
 background-opacity=0.8
 background-opacity-cells=true
+background-blur=macos-glass-clear
 background-blur-radius=10
 # background-image=~/.dotfiles/graphics/w1.jpg
 background-image-fit=stretch
