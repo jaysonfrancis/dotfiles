@@ -20,7 +20,7 @@ elif [[ $TERM == "xterm-256color" ]]; then
 fi
 
 # theme manager for ghostty
-source ~/.config/ghostty/ghostty-ai-themes.zsh
+[[ -f ~/.config/ghostty/ghostty-ai-themes.zsh ]] && source ~/.config/ghostty/ghostty-ai-themes.zsh
 
 source ~/.dotfiles/private/private_init.zsh
 
