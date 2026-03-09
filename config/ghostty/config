@@ -9,11 +9,16 @@ theme = "Argonaut"
 
 # background = 282c34
 # foreground = ffffff
-background-opacity = 0.8
-background-blur-radius = 10
+background-opacity=0.8
+background-opacity-cells=true
+background-blur-radius=10
 # background-image=~/.dotfiles/graphics/w1.jpg
 background-image-fit=stretch
 background-image-opacity=0.1
+# window-padding-color = extend-always
+window-padding-x=5
+window-padding-y=5
+
 
 cursor-color = cell-foreground
 cursor-color = #A1078D

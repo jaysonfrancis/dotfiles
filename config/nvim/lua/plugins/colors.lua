@@ -4,7 +4,7 @@ return {
 		opts = {
 			-- colorscheme = "tokyonight",
 			-- colorscheme = "synthweave-transparent",
-			colorscheme = "carbonfox",
+			-- colorscheme = "carbonfox",
 		},
 	},
 	{
@@ -15,21 +15,21 @@ return {
 			},
 		},
 	},
-	-- {
-	-- 	"folke/tokyonight.nvim",
-	-- 	name = "tokyonight",
-	-- 	opts = {
-	-- 		transparent = true,
-	-- 		style = "moon",
-	-- 		styles = {
-	-- 			sidebars = "transparent",
-	-- 			floats = "transparent",
-	-- 		},
-	-- 		dim_inactive = true,
-	-- 		lualine_bold = true,
-	-- 		on_colors = function(colors)
-	-- 			colors.bg_statusline = colors.none
-	-- 		end,
-	-- 	},
-	-- },
+	{
+		"folke/tokyonight.nvim",
+		name = "tokyonight",
+		opts = {
+			transparent = true,
+			style = "moon",
+			styles = {
+				sidebars = "transparent",
+				floats = "transparent",
+			},
+			dim_inactive = true,
+			lualine_bold = true,
+			on_colors = function(colors)
+				colors.bg_statusline = colors.none
+			end,
+		},
+	},
 }

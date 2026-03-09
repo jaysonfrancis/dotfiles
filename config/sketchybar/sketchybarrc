@@ -13,14 +13,7 @@ YELLOW=0xffe0af68
 CYAN=0xff7dcfff
 SUBTLE=0xff565f89         # muted text
 
-DISPLAY_COUNT=$(system_profiler SPDisplaysDataType | grep -c "Resolution:")
-if [ "$DISPLAY_COUNT" -gt 1 ]; then
-  BAR_DISPLAY=2
-else
-  BAR_DISPLAY=1
-fi
-
-sketchybar --bar position=top height=40 blur_radius=0 color=$BAR_BG display=$BAR_DISPLAY
+sketchybar --bar position=top height=40 blur_radius=0 color=$BAR_BG
 
 default=(
   padding_left=5
@@ -43,7 +36,7 @@ sketchybar --default "${default[@]}"
 ##### AeroSpace Workspace Indicators #####
 sketchybar --add event aerospace_workspace_change
 
-WORKSPACES=("1" "2" "3" "4" "5")
+WORKSPACES=("1" "2" "3" "4" "5" "6")
 for sid in "${WORKSPACES[@]}"
 do
   sketchybar --add item space."$sid" left \
