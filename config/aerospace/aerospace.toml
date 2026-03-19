@@ -4,14 +4,6 @@ config-version = 2
 # Start AeroSpace at login
 start-at-login = true # false
 
-# Normalizations. See: https://nikitabobko.github.io/AeroSpace/guide#normalization
-enable-normalization-flatten-containers = true
-enable-normalization-opposite-orientation-for-nested-containers = true
-
-# Layout settings
-accordion-padding = 30
-default-root-container-layout = 'tiles'
-default-root-container-orientation = 'auto'
 
 # Run Sketchybar together with AeroSpace
 # sketchybar has a built-in detection of already running process,
@@ -27,6 +19,15 @@ exec-on-workspace-change = [
     '-c',
     'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE PREV_WORKSPACE=$AEROSPACE_PREV_WORKSPACE',
 ]
+
+# Normalizations. See: https://nikitabobko.github.io/AeroSpace/guide#normalization
+enable-normalization-flatten-containers = true
+enable-normalization-opposite-orientation-for-nested-containers = true
+
+# Layout settings
+accordion-padding = 30
+default-root-container-layout = 'tiles'
+default-root-container-orientation = 'auto'
 
 # sketchybar integration
 # exec-on-workspace-change = ['/Users/zion/.local/bin/sketchybar-aerospace-update']
@@ -64,11 +65,12 @@ outer.left = 10
 outer.right = 10
 
 [workspace-to-monitor-force-assignment]
-# Workspaces 1-4 on MacBook built-in display
-1 = 'built-in'
-2 = 'built-in'
-3 = 'built-in'
-4 = 'built-in'
+1 = 'secondary'
+2 = 'secondary'
+3 = 'secondary'
+4 = 'main'
+5 = 'main'
+6 = 'main'
 # Workspaces 5-9 on secondary monitor
 # 5 = 'secondary'
 # 6 = 'secondary'
@@ -179,4 +181,16 @@ run = ['layout floating']
 
 [[on-window-detected]]
 if.app-id = 'com.apple.Music'
+run = ['layout floating']
+
+[[on-window-detected]]
+if.app-id = 'Obsidian'
+run = ['layout floating']
+
+# [[on-window-detected]]
+# if.app-id = 'com.microsoft.Outlook'
+# run = ['layout floating']
+
+[[on-window-detected]]
+if.app-id = 'us.zoom.xos'
 run = ['layout floating']
