@@ -1,29 +1,18 @@
-#fzf.zsh
+# fzf.zsh
 
-# Set up fzf key bindings and fuzzy completion
-export FZF_COMPLETION_TRIGGER='**' # Use ~~ as the trigger sequence instead of the default **
-export FZF_COMPLETION_OPTS='--border --info=inline' # Options to fzf command
+export FZF_COMPLETION_TRIGGER='**'
+export FZF_COMPLETION_OPTS='--border --info=inline'
 
-# -- Use fd instead of fzf --
 export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
 
-# Cache fzf init for performance
-FZF_CACHE="$ZSH/cache/fzf_init.zsh"
-if [[ ! -f "$FZF_CACHE" ]] || [[ "$(which fzf)" -nt "$FZF_CACHE" ]]; then
-    fzf --zsh > "$FZF_CACHE" 2>/dev/null
-fi
-[[ -f "$FZF_CACHE" ]] && source "$FZF_CACHE"
+eval "$(fzf --zsh)"
 
-# Use fd (https://github.com/sharkdp/fd) for listing path candidates.
-# - The first argument to the function ($1) is the base path to start traversal
-# - See the source code (completion.{bash,zsh}) for the details.
 _fzf_compgen_path() {
   fd --hidden --exclude .git . "$1"
 }
 
-# Use fd to generate the list for directory completion
 _fzf_compgen_dir() {
   fd --type=d --hidden --exclude .git . "$1"
 }
@@ -33,9 +22,6 @@ show_file_or_dir_preview="if [ -d {} ]; then eza --tree --color=always {} | head
 export FZF_CTRL_T_OPTS="--preview '$show_file_or_dir_preview'"
 export FZF_ALT_C_OPTS="--preview 'eza --tree --color=always {} | head -200'"
 
-# Advanced customization of fzf options via _fzf_comprun function
-# - The first argument to the function is the name of the command.
-# - You should make sure to pass the rest of the arguments to fzf.
 _fzf_comprun() {
   local command=$1
   shift

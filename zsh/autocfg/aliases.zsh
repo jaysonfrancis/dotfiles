@@ -5,11 +5,11 @@ alias l="eza --color -l --icons=always --no-user --no-permissions -s type -s mod
 alias ll="eza --color -l --icons=always --no-permissions -s type -s name --all --group-directories-first -o --time-style relative" # --git
 alias lt="eza -1T"
 alias ls="ls -l"
-alias rp="realpath" # get abs path
+alias rp="realpath"
 
-alias gp="git pull --rebase" # git up
-alias gP="git push" #
-alias gs="git status" # git st
+alias gp="git pull --rebase"
+alias gP="git push"
+alias gs="git status"
 alias gd="git diff"
 alias ga="git add -u ."
 alias gsP="git stash push"
@@ -28,25 +28,21 @@ alias k="kubectl"
 
 alias dfh="df -H --output=source,fstype,size,used,avail,pcent,target"
 
-# TODO: for iterm, fix for ghostty "tmux new-session -A -s main"
 alias tmx="tmux -CC new -A -s main"
 alias tmxa="tmux -CC attach -t main"
 alias cat="bat"
 
-# update brew
 alias brewup='brew update && brew upgrade && brew upgrade --cask --greedy && brew cleanup'
+alias aliases="nvim ~/.dotfiles/zsh/autocfg/aliases.zsh"
 
-# Edit files
-alias aliases="nvim ~/.dotfiles/zsh/autocfg/aliases.zsh" # <this file>
 
-# Move to directories
 alias gdrive="cd ~/Google\ Drive/My\ Drive/"
 alias work="cd ~/work/"
 alias pers="cd ~/personal/"
 alias dev="cd ~/dev"
 
 # Move and Edit
-alias dots="cd ~/.dotfiles/; vim zsh/autocfg/0_init.zsh"
+alias dots="cd ~/.dotfiles/; vim zsh/zshrc"
 alias obs="cd ~/Obs; vim"
 
 alias jup="jupyter lab --autoreload --no-browser . &!"

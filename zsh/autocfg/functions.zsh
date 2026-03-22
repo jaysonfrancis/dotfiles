@@ -1,7 +1,6 @@
 # functions.zsh
- _user="$(id -u -n)"
 
- # ---- sesh
+# ---- sesh
  function sesh-sessions() {
   {
     exec </dev/tty
@@ -45,20 +44,7 @@ function ca() {
         --conda)
             pick_conda_env
             ;;
-        --all)
-            # cycle: local → user venv → conda
-            if [[ -d .venv ]]; then
-                source .venv/bin/activate
-            elif [[ -d venv ]]; then
-                source venv/bin/activate
-            elif [[ -d /local/$USER/venv ]]; then
-                pick_local_env
-            else
-                pick_conda_env
-            fi
-            ;;
-        "")
-            # default: local → user venv → conda fallback
+        --all|"")
             if [[ -d .venv ]]; then
                 source .venv/bin/activate
             elif [[ -d venv ]]; then
@@ -109,6 +95,6 @@ function y() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
 	command yazi "$@" --cwd-file="$tmp"
 	IFS= read -r -d '' cwd < "$tmp"
-	[ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd"
+	[[ "$cwd" != "$PWD" ]] && [[ -d "$cwd" ]] && builtin cd -- "$cwd"
 	rm -f -- "$tmp"
 }
