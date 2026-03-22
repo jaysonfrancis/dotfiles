@@ -41,3 +41,10 @@ eval "${cmd}() {
 done
 # End -------------------------
 #  zprof
+
+# bun completions
+[ -s "/Users/jaysonfrancis/.bun/_bun" ] && source "/Users/jaysonfrancis/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
