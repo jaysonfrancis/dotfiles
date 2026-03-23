@@ -1,6 +1,7 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
 format = """
+$env_var\
 $directory\
 $git_branch\
 $git_status\
@@ -16,6 +17,10 @@ $character"""
 [character]
 success_symbol = "[❯](bold green)"
 error_symbol = "[❯](bold red)"
+
+[env_var.NODEID]
+format = "[$env_value]($style) "
+style = "bold yellow"
 
 [directory]
 truncation_length = 3
