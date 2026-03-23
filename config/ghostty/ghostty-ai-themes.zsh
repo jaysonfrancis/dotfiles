@@ -89,16 +89,36 @@ _gat_init() {
 
     osc_seq=$(_gat_parse_theme "$theme_file")
 
-    eval "${tool}() {
-      printf '${osc_seq}'
-      {
-        command ${tool} \"\$@\"
-      } always {
-        _gat_reset
-      }
-    }"
+    # Preserve any existing wrapper (e.g. Ghostty's ssh shell integration)
+    if (( $+functions[$tool] )); then
+      eval "functions[_gat_orig_${tool}]=\"\$functions[$tool]\""
+      eval "${tool}() {
+        printf '${osc_seq}'
+        {
+          _gat_orig_${tool} \"\$@\"
+        } always {
+          _gat_reset
+        }
+      }"
+    else
+      eval "${tool}() {
+        printf '${osc_seq}'
+        {
+          command ${tool} \"\$@\"
+        } always {
+          _gat_reset
+        }
+      }"
+    fi
   done <<< "$pairs"
 }
 
-# ── Auto-initialize on source ────────────────────────────────
-_gat_init
+# ── Auto-initialize, deferred to first prompt ────────────────
+# Ghostty's shell integration injects its ssh wrapper via precmd
+# after .zshrc finishes. Deferring ensures we can capture it.
+_gat_deferred_init() {
+  precmd_functions=(${precmd_functions:#_gat_deferred_init})
+  _gat_init
+  unfunction _gat_deferred_init 2>/dev/null
+}
+precmd_functions+=(_gat_deferred_init)

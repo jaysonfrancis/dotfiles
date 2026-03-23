@@ -39,7 +39,6 @@ fi
 unset _brew_bin
 
 # ─── Platform-specific / private config ───────────────────────────────────────
-[[ -f ~/.config/ghostty/ghostty-ai-themes.zsh ]] && source ~/.config/ghostty/ghostty-ai-themes.zsh
 source ~/.dotfiles/private/private_init.zsh
 
 export PATH="$HOME/.local/bin:$PATH"
@@ -146,5 +145,8 @@ done
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
-# ─── Starship init (must be last) ────────────────────────────────────────────
+# ─── Starship init ───────────────────────────────────────────────────────────
 eval "$(starship init zsh)"
+
+# ─── Ghostty AI themes (must be late so it can wrap Ghostty's ssh function) ──
+[[ -f ~/.config/ghostty/ghostty-ai-themes.zsh ]] && source ~/.config/ghostty/ghostty-ai-themes.zsh
