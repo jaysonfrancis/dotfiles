@@ -1,11 +1,3 @@
-# ghostty-ai-themes — Per-surface theme switching for AI CLI tools in Ghostty
-#
-# Uses OSC escape sequences to swap terminal colors per-pane,
-# so other Ghostty windows/tabs stay untouched.
-#
-# Source this from your .zshrc:
-#   source /path/to/ghostty-ai-themes.zsh
-
 _GAT_VERSION="1.0.0"
 _GAT_CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/ghostty/theme.yml"
 

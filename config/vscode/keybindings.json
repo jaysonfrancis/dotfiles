@@ -1,4 +1,3 @@
-// vscode bindings
 [
     {
         "key": "shift+cmd+s",
@@ -101,7 +100,5 @@
     {
         "key": "shift+cmd+f",
         "command": "-workbench.action.findInFiles"
-    },
-
-
+    }
 ]

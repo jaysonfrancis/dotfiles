@@ -4,7 +4,7 @@
     "editor.lineNumbers": "relative",
     "vim.smartRelativeLine": true,
     "editor.hover.enabled": "off",
-    "terminal.external.osxExec": "iTerm.app",
+    "terminal.external.osxExec": "Ghostty.app",
     "editor.minimap.enabled": false,
     "[python]": {
         "editor.formatOnType": true
@@ -83,23 +83,8 @@
     "keyboard.touchbar.enabled": false,
     "workbench.tree.indent": 14,
     "editor.mouseWheelZoom": true,
-    // "workbench.colorCustomizations": {
-    //     "tree.indentGuidesStroke": "#008070",
-    //     "notebook.focusedEditorBorder": "#f30a",
-    //     "notebook.focusedRowBorder": "#ff0",
-    //     "notebook.focusedCellBorder": "#f30a",
-    //     "notebook.cellEditorBackground": "#091c2f",
-    //     "notebook.cellToolbarSeparator": "#150303",
-    //     "notebook.outputContainerBackgroundColor": "#1b3754"
-    // },
-    // "notebook.output.textLineLimit": 50,
-    // "workbench.iconTheme": "vscode-icons",
-    // "notebook.output.fontFamily": "JetBrains Mono, Consolas, 'Courier New', monospace",
-    // "notebook.output.fontSize": 14,
-    // "notebook.output.lineHeight": 1.5,
-
     "vim.enableNeovim": true,
-    "vscode-neovim.neovimExecutablePaths.darwin" : "/usr/local/bin/nvim",
+    "vscode-neovim.neovimExecutablePaths.darwin": "/usr/local/bin/nvim",
     "vscode-neovim.neovimInitVimPaths.darwin": "$HOME/.dotfiles/config/nvim/init.lua",
     "explorer.sortOrder": "modified",
     "remote.autoForwardPortsSource": "hybrid",
@@ -129,25 +114,19 @@
     "focusedFolder.rememberLastFocus": true,
     "todohighlight.isEnable": true,
     "todohighlight.defaultStyle": {
-            "color": "red",
-            "backgroundColor": "#ffab00",
-            "overviewRulerColor": "#ffab00",
-            "cursor": "pointer",
-            "border": "1px solid #eee",
-            "borderRadius": "2px",
-            "isWholeLine": false,
-            //other styling properties goes here ... 
-        },
-        "workbench.colorTheme": "Gruvbox Dark Hard",
-        "llama-vscode.tool_update_todo_list_enabled": false,
-        "json.schemas": [
-            
-        ],
-        "workbench.settings.applyToAllProfiles": [
-
-        
-        ],
-        "[latex]": {
-            "editor.defaultFormatter": "mathematic.vscode-latex"
-        },
+        "color": "red",
+        "backgroundColor": "#ffab00",
+        "overviewRulerColor": "#ffab00",
+        "cursor": "pointer",
+        "border": "1px solid #eee",
+        "borderRadius": "2px",
+        "isWholeLine": false
+    },
+    "workbench.colorTheme": "Gruvbox Dark Hard",
+    "llama-vscode.tool_update_todo_list_enabled": false,
+    "json.schemas": [],
+    "workbench.settings.applyToAllProfiles": [],
+    "[latex]": {
+        "editor.defaultFormatter": "mathematic.vscode-latex"
+    }
 }
