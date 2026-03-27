@@ -35,7 +35,6 @@ alias cat="bat"
 alias brewup='brew update && brew upgrade && brew upgrade --cask --greedy && brew cleanup'
 alias aliases="nvim ~/.dotfiles/zsh/autocfg/aliases.zsh"
 
-
 alias gdrive="cd ~/Google\ Drive/My\ Drive/"
 alias work="cd ~/work/"
 alias pers="cd ~/personal/"
@@ -47,7 +46,6 @@ alias obs="cd ~/Obs; vim"
 
 alias jup="jupyter lab --autoreload --no-browser . &!"
 
-alias t1="open -na Ghostty --args --theme='Blue Matrix' --keybind=shift+cmd+backquote=toggle_visibility"
 
 sj() {
   if [[ "$1" == "." ]]; then

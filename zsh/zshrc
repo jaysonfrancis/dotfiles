@@ -20,7 +20,6 @@ ZSH_CACHE="${XDG_CACHE_HOME:-$HOME/.cache}/zsh"
 [[ ! -d "$ZSH_CACHE" ]] && mkdir -p "$ZSH_CACHE"
 
 export STARSHIP_CONFIG="$HOME/.dotfiles/config/starship/starship.toml"
-export ITERM_ENABLE_SHELL_INTEGRATION_WITH_TMUX=YES
 export UV_NATIVE_TLS=true
 
 # ─── Brew ─────────────────────────────────────────────────────────────────────
@@ -148,5 +147,5 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 # ─── Starship init ───────────────────────────────────────────────────────────
 eval "$(starship init zsh)"
 
-# ─── Ghostty AI themes (must be late so it can wrap Ghostty's ssh function) ──
-[[ -f ~/.config/ghostty/ghostty-ai-themes.zsh ]] && source ~/.config/ghostty/ghostty-ai-themes.zsh
+# ─── Color ghostty must be late so it can wrap Ghostty's ssh function
+[[ -f ~/.config/ghostty/color.zsh ]] && source ~/.config/ghostty/color.zsh
