@@ -22,6 +22,8 @@ ZSH_CACHE="${XDG_CACHE_HOME:-$HOME/.cache}/zsh"
 export STARSHIP_CONFIG="$HOME/.dotfiles/config/starship/starship.toml"
 export UV_NATIVE_TLS=true
 
+WORDCHARS='*?_[]~=&;!#$%^(){}<>'
+
 # ─── Brew ─────────────────────────────────────────────────────────────────────
 BREW_CACHE="$ZSH_CACHE/brew_shellenv.zsh"
 if [[ "$OSTYPE" == darwin* ]]; then
