@@ -5,3 +5,5 @@ tools:
     theme: "Black Metal (Burzum)"
   ssh:
     theme: "Night Owl"
+  obsidian:
+    theme: "Borland"
