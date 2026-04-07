@@ -3,10 +3,10 @@ _GAT_CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/ghostty/theme.yml"
 
 # ── Reset to Ghostty config defaults ─────────────────────────
 _gat_reset() {
-  printf '\e]110\e\\'   # reset fg
-  printf '\e]111\e\\'   # reset bg
-  printf '\e]112\e\\'   # reset cursor
-  printf '\e]104\e\\'   # reset all 256 palette colors
+  printf '\e]110\e\\\e]111\e\\\e]112\e\\\e]104\e\\'
+  if [[ -n "$TMUX" ]]; then
+    tmux select-pane -P "bg=default"
+  fi
 }
 
 # ── Locate a Ghostty theme file by name ──────────────────────
@@ -34,13 +34,13 @@ _gat_find_theme() {
 }
 
 # ── Parse a Ghostty theme file into OSC escape sequences ─────
-# Reads key=value lines, outputs a single string of escape sequences.
+# When skip_bg=1, background is omitted from OSC (for tmux pane-style usage).
 _gat_parse_theme() {
-  local theme_file="$1"
-  awk '
+  local theme_file="$1" skip_bg="${2:-0}"
+  awk -v skip_bg="$skip_bg" '
     BEGIN { FS = " = " }
     /^foreground/   { printf "\\e]10;%s\\e\\\\", $2 }
-    /^background/   { printf "\\e]11;%s\\e\\\\", $2 }
+    /^background/   { if (!skip_bg) printf "\\e]11;%s\\e\\\\", $2 }
     /^cursor-color/ { printf "\\e]12;%s\\e\\\\", $2 }
     /^palette/ {
       split($2, a, "=")
@@ -68,7 +68,7 @@ _gat_init() {
     }
   ' "$_GAT_CONFIG")
 
-  local tool theme_name theme_file osc_seq
+  local tool theme_name theme_file osc_seq _tmux_line _invoke _theme_bg
   while IFS=$'\t' read -r tool theme_name; do
     [[ -z "$tool" ]] && continue
 
@@ -79,29 +79,32 @@ _gat_init() {
       continue
     fi
 
-    osc_seq=$(_gat_parse_theme "$theme_file")
+    _tmux_line=""
+    if [[ -n "$TMUX" ]]; then
+      # Skip OSC 11 bg, use tmux pane-style to avoid double opacity
+      _theme_bg=$(awk 'BEGIN { FS = " = " } /^background/ { print $2 }' "$theme_file")
+      osc_seq=$(_gat_parse_theme "$theme_file" 1)
+      _tmux_line="tmux select-pane -P 'bg=${_theme_bg}'"
+    else
+      osc_seq=$(_gat_parse_theme "$theme_file" 0)
+    fi
 
-    # Preserve any existing wrapper (e.g. Ghostty's ssh shell integration)
     if (( $+functions[$tool] )); then
       eval "functions[_gat_orig_${tool}]=\"\$functions[$tool]\""
-      eval "${tool}() {
-        printf '${osc_seq}'
-        {
-          _gat_orig_${tool} \"\$@\"
-        } always {
-          _gat_reset
-        }
-      }"
+      _invoke="_gat_orig_${tool}"
     else
-      eval "${tool}() {
-        printf '${osc_seq}'
-        {
-          command ${tool} \"\$@\"
-        } always {
-          _gat_reset
-        }
-      }"
+      _invoke="command ${tool}"
     fi
+
+    eval "${tool}() {
+      ${_tmux_line}
+      printf '${osc_seq}'
+      {
+        ${_invoke} \"\$@\"
+      } always {
+        _gat_reset
+      }
+    }"
   done <<< "$pairs"
 }
 

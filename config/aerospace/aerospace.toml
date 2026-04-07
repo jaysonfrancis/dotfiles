@@ -60,14 +60,14 @@ preset = 'qwerty'
 inner.horizontal = 10
 inner.vertical = 10
 outer.bottom = 10
-outer.top = [{ monitor.built-in = 10 }, 8]
+outer.top = [{ monitor.built-in = 10 }, 4]
 outer.left = 10
 outer.right = 10
 
 [workspace-to-monitor-force-assignment]
-1 = 'secondary'
-2 = 'secondary'
-3 = 'secondary'
+1 = ['secondary', 'main']
+2 = ['secondary', 'main']
+3 = ['secondary', 'main']
 4 = 'main'
 5 = 'main'
 6 = 'main'
@@ -131,6 +131,7 @@ alt-tab = 'workspace-back-and-forth'
 alt-f = 'fullscreen'
 alt-s = 'layout v_accordion'
 alt-r = 'mode resize'
+alt-space = 'exec-and-forget sketchybar --bar hidden=toggle'
 
 [mode.resize.binding]
 h = 'resize width -50'
