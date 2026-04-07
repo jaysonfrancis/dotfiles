@@ -13,22 +13,22 @@ YELLOW=0xffe0af68
 CYAN=0xff7dcfff
 SUBTLE=0xff565f89         # muted text
 
-sketchybar --bar position=top height=40 blur_radius=0 color=$BAR_BG topmost=window
+sketchybar --bar position=top height=34 blur_radius=0 color=$BAR_BG topmost=window
 
 default=(
-  padding_left=5
-  padding_right=5
-  icon.font="Hack Nerd Font:Bold:17.0"
-  label.font="Hack Nerd Font:Bold:14.0"
+  padding_left=4
+  padding_right=4
+  icon.font="Hack Nerd Font:Bold:14.0"
+  label.font="Hack Nerd Font:Bold:12.0"
   icon.color=$ICON_COLOR
   label.color=$LABEL_COLOR
-  icon.padding_left=8
-  icon.padding_right=4
-  label.padding_left=4
-  label.padding_right=8
+  icon.padding_left=6
+  icon.padding_right=3
+  label.padding_left=3
+  label.padding_right=6
   background.color=$ITEM_BG
-  background.corner_radius=8
-  background.height=28
+  background.corner_radius=6
+  background.height=24
   background.drawing=on
 )
 sketchybar --default "${default[@]}"
@@ -44,11 +44,11 @@ do
              --set space."$sid" \
              icon="$sid" \
              icon.color=$SUBTLE \
-             icon.padding_left=10 \
-             icon.padding_right=10 \
+             icon.padding_left=8 \
+             icon.padding_right=8 \
              background.color=$ITEM_BG \
-             background.corner_radius=8 \
-             background.height=28 \
+             background.corner_radius=6 \
+             background.height=24 \
              label.drawing=off \
              script="$PLUGIN_DIR/aerospace.sh" \
              click_script="aerospace workspace $sid"
@@ -67,7 +67,7 @@ sketchybar --add item music right \
            --set music update_freq=5 \
                          icon=󰎆 \
                          icon.color=$RED \
-                         icon.font="Hack Nerd Font:Bold:22.0" \
+                         icon.font="Hack Nerd Font:Bold:18.0" \
                          label.color=$LABEL_COLOR \
                          label.drawing=off \
                          script="$PLUGIN_DIR/music.sh" \
@@ -75,7 +75,7 @@ sketchybar --add item music right \
            --add item music.next right \
            --set music.next \
                          icon=󰒭 \
-                         icon.font="Hack Nerd Font:Bold:20.0" \
+                         icon.font="Hack Nerd Font:Bold:16.0" \
                          icon.color=$RED \
                          label.drawing=off \
                          drawing=off \

@@ -13,6 +13,7 @@ fi
 source "${ZINIT_HOME}/zinit.zsh"
 
 # ─── Environment ──────────────────────────────────────────────────────────────
+export XDG_CONFIG_HOME="$HOME/.config"
 HOST="${HOST%%.*}"
 EDITOR="nvim"
 
