@@ -122,6 +122,9 @@ source "$HOME/.dotfiles/zsh/autocfg/aliases.zsh"
 source "$HOME/.dotfiles/zsh/autocfg/functions.zsh"
 source "$HOME/.dotfiles/zsh/autocfg/fzf.zsh"
 
+# Misc
+source "$HOME/.dotfiles/zsh/autocfg/git_audit.zsh"
+
 # ─── NVM lazy loading ────────────────────────────────────────────────────────
 export NVM_DIR="$HOME/.nvm"
 declare -a NODE_GLOBALS=("node" "nvm" "npm" "npx" "yarn" "pnpm")
