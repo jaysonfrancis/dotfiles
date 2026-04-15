@@ -27,6 +27,17 @@ function ipof() {
   getent hosts "$1" | awk '{print $1}'
 }
 
+function mkcd () {
+  mkdir -p -- "$1" && cd -- "$1"
+}
+
+function mvip() {
+  local path="$1"
+  local newname="$2"
+  mv -i -- "$path" "$(dirname -- "$path")/$newname"
+}
+
+
 function ca() {
     pick_local_env() {
         local env
