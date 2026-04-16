@@ -32,9 +32,9 @@ function mkcd () {
 }
 
 function mvip() {
-  local path="$1"
+  local src="$1"
   local newname="$2"
-  mv -i -- "$path" "$(dirname -- "$path")/$newname"
+  mv -i -- "$src" "${src:h}/$newname"
 }
 
 
