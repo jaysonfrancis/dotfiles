@@ -61,9 +61,9 @@ fi
 autoload -Uz compinit
 ZCOMPDUMP="${ZDOTDIR:-$HOME}/.zcompdump"
 if [[ -n ${ZCOMPDUMP}(#qN.mh+24) ]]; then
-    compinit -d "${ZCOMPDUMP}"
+    compinit -i -d "${ZCOMPDUMP}"
 else
-    compinit -C -d "${ZCOMPDUMP}"
+    compinit -C -i -d "${ZCOMPDUMP}"
 fi
 zstyle ':completion:*' menu select
 
