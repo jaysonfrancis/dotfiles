@@ -1,18 +1,18 @@
 #!/bin/zsh
 
 # Log
-function print() {
+function log() {
     [ $# -eq 2 ] && echo -e "$1$2\033[0m" || echo "$1"
 }
 
 function install_brew() {
     [ ! -f "$(which brew)" ] && /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)" ||
-        brew update && print $SECONDARY "$(brew --version | head -1) is already installed."
+        brew update && log $SECONDARY "$(brew --version | head -1) is already installed."
 }
 
 function update_shell() {
     if [[ " $@ " =~ " --update-shell " ]]; then
-        print $SECONDARY "Changing $SHELL to zsh"
+        log $SECONDARY "Changing $SHELL to zsh"
 
         # Install the latest zsh shell
         brew install zsh
@@ -38,7 +38,7 @@ function install_bins() {
     export PATH="$(brew --prefix coreutils)/libexec/gnubin:/usr/local/bin:$PATH"
 
     # Install binaries using Homebrew, iterate over bins array and install.
-    print $PRIMARY "Installing the following binaries $bins"
+    log $PRIMARY "Installing the following binaries $bins"
     for binary in "${bins[@]}"; do
         # split the brew formula into binary name and version of installation and
         # get the name of the binary (ex- php in php@7.4)
@@ -60,12 +60,12 @@ function install_casks() {
     # required to properly install coreutils
     export PATH="$(brew --prefix coreutils)/libexec/gnubin:/usr/local/bin:$PATH"
 
-    print $PRIMARY "Installing the following casks $casks"
+    log $PRIMARY "Installing the following casks $casks"
 
     # Install casks using Homebrew, iterate over casks array and install.
     for c in "${casks[@]}"; do
         [[ ! "$(brew list --cask | grep "$c")" ]] &&
-            print $SECONDARY "Installing $c" && brew install --cask "$c"
+            log $SECONDARY "Installing $c" && brew install --cask "$c"
     done
 
 }

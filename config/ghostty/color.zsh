@@ -90,20 +90,13 @@ _gat_init() {
     fi
 
     if (( $+functions[$tool] )); then
-      eval "functions[_gat_orig_${tool}]=\"\$functions[$tool]\""
+      functions[_gat_orig_${tool}]="$functions[$tool]"
       _invoke="_gat_orig_${tool}"
     else
       _invoke="command ${tool}"
     fi
 
-    eval "${tool}() {
-      printf '${osc_seq}'
-      {
-        ${_invoke} \"\$@\"
-      } always {
-        _gat_reset
-      }
-    }"
+    functions[$tool]="printf '${osc_seq}'; { ${_invoke} \"\$@\" } always { _gat_reset }"
   done <<< "$pairs"
 }
 

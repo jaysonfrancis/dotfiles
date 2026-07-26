@@ -8,14 +8,6 @@ return {
 		},
 	},
 	{
-		"EdenEast/nightfox.nvim",
-		opts = {
-			options = {
-				transparent = false,
-			},
-		},
-	},
-	{
 		"folke/tokyonight.nvim",
 		name = "tokyonight",
 		opts = {

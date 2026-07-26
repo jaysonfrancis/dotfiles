@@ -10,6 +10,16 @@ return {
 		local config = fzf.config
 		local actions = fzf.actions
 
+		local function symbols_filter(entry, ctx)
+			if ctx.symbols_filter == nil then
+				ctx.symbols_filter = LazyVim.config.get_kind_filter(ctx.bufnr) or false
+			end
+			if ctx.symbols_filter == false then
+				return true
+			end
+			return vim.tbl_contains(ctx.symbols_filter, entry.kind)
+		end
+
 		-- Quickfix
 		config.defaults.keymap.fzf["ctrl-q"] = "select-all+accept"
 		config.defaults.keymap.fzf["ctrl-u"] = "half-page-up"
@@ -218,7 +228,7 @@ return {
 		{
 			"<leader>fA",
 			function()
-				require("fzf-lua").files({ cwd = vim.loop.os_homedir() })
+				require("fzf-lua").files({ cwd = vim.uv.os_homedir() })
 			end,
 			desc = "Search anywhere in HOME",
 		},

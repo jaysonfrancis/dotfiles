@@ -18,7 +18,7 @@ alias vim="nvim"
 alias zz="vim ~/.zshrc"
 alias python="python3"
 alias py="ipython"
-alias help="tldr"
+alias t="tldr"
 
 # Shortcuts
 alias gg="lazygit"
@@ -29,12 +29,14 @@ alias dfh="df -H --output=source,fstype,size,used,avail,pcent,target"
 
 alias tmx="tmux -CC new -A -s main"
 alias tmxa="tmux -CC attach -t main"
-alias cat="bat"
+
+# Guard cat=bat for interactive only so scripts aren't affected
+[[ -o interactive ]] && (( $+commands[bat] )) && alias cat="bat"
 
 alias brewup='brew update && brew upgrade && brew upgrade --cask --greedy && brew cleanup'
 alias aliases="nvim ~/.dotfiles/zsh/autocfg/aliases.zsh"
 
-alias gdrive="cd ~/Google\ Drive/My\ Drive/"
+alias gdrive='cd ~/"Google Drive/My Drive/"'
 alias work="cd ~/work/"
 alias pers="cd ~/personal/"
 alias dev="cd ~/dev"
@@ -44,16 +46,3 @@ alias dots="cd ~/.dotfiles/; vim zsh/zshrc"
 alias obs="cd ~/dev/obs; vim"
 
 alias jup="jupyter lab --autoreload --no-browser . &!"
-
-
-sj() {
-  if [[ "$1" == "." ]]; then
-    sesh connect "$(basename "$PWD")"
-  else
-    sesh connect "$(sesh list | fzf --preview 'bat --color=always {}')"
-  fi
-}
-
-nsj() {
-  nvim "$(fzf --preview 'bat --color=always {}')"
-}

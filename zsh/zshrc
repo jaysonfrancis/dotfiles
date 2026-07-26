@@ -26,6 +26,15 @@ export UV_SYSTEM_CERTS=true
 
 WORDCHARS='*?_[]~=&;!#$%^(){}<>'
 
+# ─── Modern setopt ────────────────────────────────────────────────────────────
+setopt AUTO_CD              # type a dir name to cd into it
+setopt AUTO_PUSHD           # cd pushes to directory stack
+setopt PUSHD_IGNORE_DUPS    # don't push duplicates
+setopt EXTENDED_GLOB        # enables ^, ~, # patterns
+setopt INTERACTIVE_COMMENTS # allow # comments in interactive shell
+setopt NO_BEEP              # disable terminal bell
+setopt HIST_REDUCE_BLANKS   # remove extra blanks from history
+
 # ─── Brew ─────────────────────────────────────────────────────────────────────
 BREW_CACHE="$ZSH_CACHE/brew_shellenv.zsh"
 if [[ "$OSTYPE" == darwin* ]]; then
@@ -45,8 +54,6 @@ unset _brew_bin
 [[ -f "$HOME/.dotfiles/private/private_init.zsh" ]] && source "$HOME/.dotfiles/private/private_init.zsh"
 
 export PATH="$HOME/.local/bin:$PATH"
-[[ -f "$HOME/.local/bin/env" ]] && source "$HOME/.local/bin/env"
-[[ -f "$HOME/.cargo/env" ]] && source "$HOME/.cargo/env"
 
 if [[ -d /usr/local/cuda ]]; then
     export PATH="/usr/local/cuda/bin${PATH:+:${PATH}}"
@@ -67,6 +74,8 @@ else
     compinit -C -i -d "${ZCOMPDUMP}"
 fi
 zstyle ':completion:*' menu select
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'  # case-insensitive
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
 # ─── History ──────────────────────────────────────────────────────────────────
 export HISTFILE="$ZSH_CACHE/zsh_history_$HOST"
@@ -90,19 +99,37 @@ bindkey '^O' clear-screen
 bindkey '^/' clear-screen
 
 # ─── Zinit plugins (turbo/lazy-loaded) ────────────────────────────────────────
+# Order matters: syntax-highlighting must be loaded last
 zinit ice wait lucid atload"_zsh_autosuggest_start"
 zinit light zsh-users/zsh-autosuggestions
-
-zinit ice wait lucid
-zinit light zsh-users/zsh-syntax-highlighting
 
 zinit ice wait lucid blockf
 zinit light zsh-users/zsh-completions
 
-# ─── Tool init ────────────────────────────────────────────────────────────────
-eval "$(zoxide init zsh)"
-eval "$(direnv hook zsh)"
-[[ -o interactive ]] && alias cd="z"
+zinit ice wait lucid atinit"ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)"
+zinit light zsh-users/zsh-syntax-highlighting
+
+# ─── Tool init (cached) ───────────────────────────────────────────────────────
+_cache_init() {
+    local cache_file="$1"
+    shift
+    local generator_bin="$1"
+    shift
+
+    if [[ ! -x "$generator_bin" ]]; then
+        return
+    fi
+    if [[ ! -f "$cache_file" || "$generator_bin" -nt "$cache_file" ]]; then
+        "$generator_bin" "$@" >| "$cache_file" 2>/dev/null
+    fi
+    [[ -s "$cache_file" ]] && source "$cache_file"
+}
+
+_cache_init "$ZSH_CACHE/zoxide-init.zsh" "${commands[zoxide]:-}" init zsh
+_cache_init "$ZSH_CACHE/direnv-init.zsh" "${commands[direnv]:-}" hook zsh
+_cache_init "$ZSH_CACHE/starship-init.zsh" "${commands[starship]:-}" init zsh
+
+[[ -o interactive ]] && (( $+commands[zoxide] )) && alias cd="z"
 
 _cache_and_source_completion() {
     local cache_file="$1"
@@ -154,20 +181,13 @@ load_nvm() {
 }
 
 for cmd in "${NODE_GLOBALS[@]}"; do
-eval "${cmd}() {
-  unset -f ${NODE_GLOBALS[*]} 2>/dev/null
-  load_nvm
-  command ${cmd} \"\$@\"
-}"
+    functions[$cmd]="unset -f ${NODE_GLOBALS[*]} 2>/dev/null; load_nvm; command $cmd \"\$@\""
 done
 
 # ─── Bun ──────────────────────────────────────────────────────────────────────
 [[ -s "$HOME/.bun/_bun" ]] && source "$HOME/.bun/_bun"
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
-
-# ─── Starship init ───────────────────────────────────────────────────────────
-eval "$(starship init zsh)"
 
 # ─── Color ghostty must be late so it can wrap Ghostty's ssh function
 [[ -f ~/.config/ghostty/color.zsh ]] && source ~/.config/ghostty/color.zsh

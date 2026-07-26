@@ -17,14 +17,18 @@ zle     -N             sesh-sessions
 bindkey -M emacs '\es' sesh-sessions
 bindkey -M vicmd '\es' sesh-sessions
 bindkey -M viins '\es' sesh-sessions
-# -----
+# ----
 
 function uvrun() {
-    uv run $1
+    uv run "$@"
 }
 
 function ipof() {
-  getent hosts "$1" | awk '{print $1}'
+  if (( $+commands[dig] )); then
+    dig +short "$1"
+  else
+    getent hosts "$1" | awk '{print $1}'
+  fi
 }
 
 function mkcd () {
@@ -36,7 +40,6 @@ function mvip() {
   local newname="$2"
   mv -i -- "$src" "${src:h}/$newname"
 }
-
 
 function ca() {
     pick_local_env() {
@@ -115,7 +118,6 @@ function claude-vllm() {
     CLAUDE_CONFIG_DIR="$HOME/.claude-vllm" command claude "$@"
 }
 
-
 # worktree
 function gwt() {
     local main repo parent branch base dest
@@ -137,4 +139,18 @@ function gwt() {
     else
         return 1
     fi
+}
+
+# sesh connect with fzf
+sj() {
+  if [[ "$1" == "." ]]; then
+    sesh connect "$(basename "$PWD")"
+  else
+    sesh connect "$(sesh list | fzf --preview 'bat --color=always {}')"
+  fi
+}
+
+# nvim with fzf
+nsj() {
+  nvim "$(fzf --preview 'bat --color=always {}')"
 }
