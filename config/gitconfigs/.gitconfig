@@ -26,7 +26,7 @@
     ci = commit
     undo = reset --soft HEAD^
     up = pull --rebase
-    co = checkout
+    co = "!f() { git checkout \"$@\" && git submodule update --init --recursive; }; f"
     cl = clean
     lg = log --oneline --graph --decorate --all
     pushall = !git remote | xargs -L1 git push --all
@@ -78,3 +78,5 @@
 
 [push]
 	autoSetupRemote = true
+
+
