@@ -42,6 +42,7 @@
         git reset --soft \"$base\" && git commit; \
     }; f"
     pushf = push --force-with-lease
+    gone = "!git fetch --prune && git branch -vv | awk '/: gone]/{print $1}' | xargs -r git branch -D"
 
 [interactive]
 	diffFilter = diff-so-fancy --patch
