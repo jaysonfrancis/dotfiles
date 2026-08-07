@@ -7,8 +7,8 @@ alias lt="eza -1T"
 alias ls="ls -l"
 alias rp="realpath"
 
-alias gp="git pull --rebase"
-alias gpa="git pull --rebase --autostash"
+alias gp="git pull"
+alias gpa="git pull --autostash"
 alias gP="git push"
 alias gs="git status"
 alias gd="git diff"
@@ -43,6 +43,8 @@ alias dev="cd ~/dev"
 
 # Move and Edit
 alias dots="cd ~/.dotfiles/; vim zsh/zshrc"
+alias dotspull="git -C ~/.dotfiles pull --rebase --autostash"
+alias dotspush="git -C ~/.dotfiles add -u . && git -C ~/.dotfiles commit -m 'update' && git -C ~/.dotfiles push"
 alias obs="cd ~/dev/obs; vim"
 
 alias jup="jupyter lab --autoreload --no-browser . &!"

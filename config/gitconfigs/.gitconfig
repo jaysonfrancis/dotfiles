@@ -1,8 +1,6 @@
 [include]
     path = ~/.gitconfig-local
 
-[pull]
-    rebase = true
 
 [apply]
   ignorewhitespace = change
@@ -25,19 +23,14 @@
     required = true
 
 [alias]
-    st = status
     br = branch
     ci = commit
     undo = reset --soft HEAD^
     up = pull --rebase
     co = "!f() { git checkout \"$@\" && git submodule update --init --recursive; }; f"
-    cl = clean
     lg = log --oneline --graph --decorate --all
-    pushall = !git remote | xargs -L1 git push --all
     supdate = !git submodule update --remote --merge
     resign = "!f() { git rebase --exec 'git commit --amend --no-edit -n -S' -i \"$1\"; }; f"
-    reset-branch = "!f() { git fetch origin && git stash && git checkout \"$1\" && git reset --hard origin/main && git push --force-with-lease origin \"$1\" && git checkout - && git stash pop 2>/dev/null; }; f"
-    sync = "!f() { git fetch --all && git rebase --autostash \"${1:-origin/main}\"; }; f"
     squash = "!f() { \
         base=$(git merge-base HEAD \"${1:-origin/main}\"); \
         if [ \"$base\" = \"$(git rev-parse HEAD)\" ]; then \
@@ -46,7 +39,7 @@
         git reset --soft \"$base\" && git commit; \
     }; f"
     pushf = push --force-with-lease
-    gone = "!git fetch --prune && git branch -vv | awk '/: gone]/{print $1}' | xargs -r git branch -D"
+    gone = "!git fetch --prune && git branch -vv | awk '/: gone]/{print $1}' | xargs -r git branch -d"
 
 [interactive]
 	diffFilter = diff-so-fancy --patch
