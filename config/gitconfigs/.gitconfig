@@ -13,6 +13,10 @@
     pager = diff-so-fancy | less --tabs=4 -RF
     editor = nvim
 	excludesFile = ~/.dotfiles/config/gitconfigs/.gitignore
+    # Speed up `git status` — caches untracked file info per-directory.
+    # Note: core.fsmonitor does NOT work on NFS (our home dir is NFS-mounted),
+    #       so only untrackedcache is enabled.
+    untrackedcache = true
 
 [filter "lfs"]
 	clean = git-lfs clean -- %f
