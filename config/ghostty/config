@@ -105,6 +105,9 @@ keybind = ctrl+shift+D=new_split:down
 keybind = ctrl+shift+Z=toggle_split_zoom
 keybind = ctrl+z=unbind
 
+keybind = cmd+equal=increase_font_size:1
+keybind = cmd+minus=decrease_font_size:1
+
 # tmux pane splits — sends `prefix + key` to tmux (prefix = ` = \x60)
 # \x25 = %  → split left/right     \x22 = "  → split top/bottom
 keybind = cmd+d=text:\x60\x25
