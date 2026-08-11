@@ -45,7 +45,7 @@ automatically-unhide-macos-hidden-apps = false
 # even when they are invisible.
 # This config version is only available since 'config-version = 2'
 # Fallback value (if you omit the key): persistent-workspaces = []
-persistent-workspaces = ["1", "2", "3", "4", "5", "6"]
+persistent-workspaces = ["1", "2", "3", "4", "5", "6", "7"]
 
 # A callback that runs every time binding mode changes
 on-mode-changed = []
@@ -71,6 +71,7 @@ outer.right = [{ monitor.main = 5 }, 5]
 4 = 'main'
 5 = 'main'
 6 = 'main'
+7 = 'main'
 # Workspaces 5-9 on secondary monitor
 # 5 = 'secondary'
 # 6 = 'secondary'
@@ -129,9 +130,11 @@ alt-ctrl-9 = 'move-node-to-workspace 9'
 # Utilities
 alt-tab = 'workspace-back-and-forth'
 alt-f = 'fullscreen'
-alt-s = 'layout v_accordion'
+alt-s = 'workspace --auto-back-and-forth 6'
 alt-r = 'mode resize'
 alt-space = 'exec-and-forget sketchybar --bar hidden=toggle'
+alt-shift-s = 'layout v_accordion'
+alt-o = 'workspace --auto-back-and-forth 7'
 
 [mode.resize.binding]
 h = 'resize width -50'
@@ -185,8 +188,8 @@ if.app-id = 'com.apple.Music'
 run = ['layout floating']
 
 [[on-window-detected]]
-if.app-id = 'Obsidian'
-run = ['layout floating']
+if.app-id = 'md.obsidian'
+run = ['move-node-to-workspace 7']
 
 # [[on-window-detected]]
 # if.app-id = 'com.microsoft.Outlook'
@@ -195,6 +198,10 @@ run = ['layout floating']
 [[on-window-detected]]
 if.app-id = 'us.zoom.xos'
 run = ['layout floating']
+
+[[on-window-detected]]
+if.app-id = 'com.apple.Stickies'
+run = ['layout floating', 'move-node-to-workspace 6']
 
 # Other Tips:
 # Drag windoww by holding ctrl+cmd (run in mac)
