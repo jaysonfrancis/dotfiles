@@ -11,6 +11,7 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 	pattern = "*.jsonl",
 	callback = function()
 		vim.bo.filetype = "json"
+		vim.b.autoformat = false
 	end,
 })
 

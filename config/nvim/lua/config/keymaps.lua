@@ -75,6 +75,37 @@ map(
 map("n", "gK", "va{", { noremap = true, silent = true, desc = "Visual around {}" })
 map("n", "gJ", "vi{", { noremap = true, silent = true, desc = "Visual inside {}" })
 
+-- Pretty-print current JSONL line in a floating window
+map("n", "<leader>jj", function()
+	local line = vim.api.nvim_get_current_line()
+	local result = vim.fn.system("jq .", line)
+	if vim.v.shell_error ~= 0 then
+		vim.notify("Not valid JSON on this line", vim.log.levels.WARN)
+		return
+	end
+	local lines = vim.split(result, "\n")
+	local buf = vim.api.nvim_create_buf(false, true)
+	vim.api.nvim_buf_set_lines(buf, 0, -1, false, lines)
+	vim.bo[buf].filetype = "json"
+	vim.bo[buf].modifiable = false
+	local width = math.min(120, vim.o.columns - 4)
+	local height = math.min(#lines, vim.o.lines - 4)
+	local row = math.floor((vim.o.lines - height) / 2)
+	local col = math.floor((vim.o.columns - width) / 2)
+	local win = vim.api.nvim_open_win(buf, true, {
+		relative = "editor",
+		row = row,
+		col = col,
+		width = width,
+		height = height,
+		style = "minimal",
+		border = "rounded",
+	})
+	vim.keymap.set("n", "q", function()
+		vim.api.nvim_win_close(win, true)
+	end, { buffer = buf, nowait = true, silent = true })
+end, { noremap = true, silent = true, desc = "Pretty-print JSONL line" })
+
 -- " Moving between windows (from Ben Frain's talk at NeovimConf 2022) <Leader>1-6
 for i = 1, 6 do
 	local lhs = "<leader>" .. i
