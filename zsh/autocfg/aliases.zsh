@@ -21,6 +21,7 @@ alias py="ipython"
 alias t="tldr"
 
 # Shortcuts
+unalias gg 2>/dev/null
 alias gg="lazygit"
 alias lzd="lazydocker"
 alias k="kubectl"
