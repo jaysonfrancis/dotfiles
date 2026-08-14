@@ -40,6 +40,7 @@
     }; f"
     pushf = push --force-with-lease
     gone = "!git fetch --prune && git branch -vv | awk '/: gone]/{print $1}' | xargs -r git branch -d"
+	fresh = "!f() { [ -z \"$1\" ] && echo \"usage: git fresh <branch>\" && return 1; git stash -q && git fetch origin && git reset --hard origin/$1; git stash pop -q 2>/dev/null; true; }; f"
 
 [interactive]
 	diffFilter = diff-so-fancy --patch

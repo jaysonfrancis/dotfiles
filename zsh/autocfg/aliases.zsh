@@ -12,7 +12,7 @@ alias gpa="git pull --autostash"
 alias gP="git push"
 alias gs="git status"
 alias gd="git diff"
-alias ga="git add -u ."
+alias ga="git add"
 
 alias vim="nvim"
 alias zz="vim ~/.zshrc"
