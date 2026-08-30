@@ -142,7 +142,14 @@ function gwt() {
 
     branch="$1"
     base="${2:-origin/main}"
-    [ -n "$branch" ] || { echo "usage: gwt <branch> [base] | gwt rm <branch> [-d]" >&2; return 1; }
+
+    # no args → pick an existing worktree via fzf
+    if [ -z "$branch" ]; then
+        local sel
+        sel=$(git worktree list | fzf --height=40% --layout=reverse --prompt='worktree> ') || return 0
+        cd "$(awk '{print $1}' <<<"$sel")" || return 1
+        return 0
+    fi
     dest="$parent/$repo.worktrees/$branch"
 
     # worktree already exists → just hop in
