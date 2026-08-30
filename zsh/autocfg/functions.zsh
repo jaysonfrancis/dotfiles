@@ -123,6 +123,20 @@ gwm() {
     cd "$(dirname "$(git rev-parse --path-format=absolute --git-common-dir)")" || return 1
 }
 
+# vendors: init this worktree's submodules borrowing objects from the main checkout
+# usage: gws [name]   (no args = all submodules from .gitmodules)
+gws() {
+    local main sub
+    main=$(dirname "$(git rev-parse --path-format=absolute --git-common-dir)") || return 1
+    if [ -n "$1" ]; then
+        git submodule update --init --reference "$main/vendors/$1" "vendors/$1"
+        return
+    fi
+    for sub in $(git config --file .gitmodules --get-regexp '\.path$' | awk '{print $2}'); do
+        git submodule update --init --reference "$main/$sub" "$sub"
+    done
+}
+
 # worktree: hop into existing, check out existing branch, or create from base
 function gwt() {
     local main repo parent branch base dest
@@ -165,6 +179,9 @@ function gwt() {
     else
         git worktree add "$dest" -b "$branch" "$base" || return 1
     fi
+
+    # hint: submodules don't materialize in new worktrees
+    [ -f "$dest/.gitmodules" ] && echo "hint: run 'gws' to init vendors from the main checkout"
 
     # share harness skills from the main checkout (AGENTS.md is branch-tracked)
     if [ -d "$main/.focus/skills" ]; then
