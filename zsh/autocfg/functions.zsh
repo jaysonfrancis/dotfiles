@@ -118,27 +118,53 @@ function claude-vllm() {
     CLAUDE_CONFIG_DIR="$HOME/.claude-vllm" command claude "$@"
 }
 
-# worktree
+# back to the repo's main checkout, from any worktree
+gwm() {
+    cd "$(dirname "$(git rev-parse --path-format=absolute --git-common-dir)")" || return 1
+}
+
+# worktree: hop into existing, check out existing branch, or create from base
 function gwt() {
     local main repo parent branch base dest
     main=$(dirname "$(git rev-parse --path-format=absolute --git-common-dir)") || return 1
     repo=$(basename "$main")
     parent=$(dirname "$main")
+
+    if [ "$1" = "rm" ]; then
+        branch="$2"
+        dest="$parent/$repo.worktrees/$branch"
+        [ -n "$branch" ] || { echo "usage: gwt rm <branch> [-d]" >&2; return 1; }
+        [ -d "$dest" ] || { echo "no worktree for $branch" >&2; return 1; }
+        git worktree remove "$dest" || return 1
+        [[ "$3" = "-d" ]] && git branch -d "$branch"
+        return 0
+    fi
+
     branch="$1"
     base="${2:-origin/main}"
-
-    if [ -z "$branch" ]; then
-        echo "usage: gwt <branch> [base]" >&2
-        return 1
-    fi
-
+    [ -n "$branch" ] || { echo "usage: gwt <branch> [base] | gwt rm <branch> [-d]" >&2; return 1; }
     dest="$parent/$repo.worktrees/$branch"
 
-    if git worktree add "$dest" -b "$branch" "$base"; then
+    # worktree already exists → just hop in
+    if [ -d "$dest" ]; then
         cd "$dest" || return 1
-    else
-        return 1
+        return 0
     fi
+
+    if git show-ref --verify --quiet "refs/heads/$branch"; then
+        git worktree add "$dest" "$branch" || return 1
+    elif git show-ref --verify --quiet "refs/remotes/origin/$branch"; then
+        git worktree add "$dest" -b "$branch" "origin/$branch" || return 1
+    else
+        git worktree add "$dest" -b "$branch" "$base" || return 1
+    fi
+
+    # share harness skills from the main checkout (AGENTS.md is branch-tracked)
+    if [ -d "$main/.focus/skills" ]; then
+        [ -d "$dest/.focus" ] || mkdir -p "$dest/.focus"
+        [ ! -e "$dest/.focus/skills" ] && ln -s "$main/.focus/skills" "$dest/.focus/skills"
+    fi
+    cd "$dest" || return 1
 }
 
 # sesh connect with fzf

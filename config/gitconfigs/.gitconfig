@@ -40,7 +40,7 @@
     }; f"
     pushf = push --force-with-lease
     gone = "!git fetch --prune && git branch -vv | awk '/: gone]/{print $1}' | xargs -r git branch -d"
-	fresh = "!f() { [ -z \"$1\" ] && echo \"usage: git fresh <branch>\" && return 1; git stash -q && git fetch origin && git reset --hard origin/$1; git stash pop -q 2>/dev/null; true; }; f"
+	fresh = "!f() { [ -z \"$1\" ] && echo \"usage: git fresh <branch>\" && return 1; if [ -z \"$(git status --porcelain)\" ]; then echo \"Working tree clean, nothing to stash.\"; else git stash -q; echo \"Stashed changes.\"; fi; git fetch origin && git reset --hard origin/$1; echo \"\"; echo \"Stash list:\"; git stash list; echo \"\"; echo \"Run: git stash pop              (pop most recent)\"; echo \"Run: git stash pop stash@{n}   (pop specific)\"; }; f"
 
 [interactive]
 	diffFilter = diff-so-fancy --patch
