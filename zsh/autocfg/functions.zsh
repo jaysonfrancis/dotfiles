@@ -149,13 +149,21 @@ function gwt() {
         dest="$parent/$repo.worktrees/$branch"
         [ -n "$branch" ] || { echo "usage: gwt rm <branch> [-d]" >&2; return 1; }
         [ -d "$dest" ] || { echo "no worktree for $branch" >&2; return 1; }
-        git worktree remove "$dest" || return 1
+        # --force: worktrees with submodules refuse removal otherwise
+        git worktree remove --force "$dest" || return 1
         [[ "$3" = "-d" ]] && git branch -d "$branch"
         return 0
     fi
 
     branch="$1"
-    base="${2:-origin/main}"
+    # default base: whatever branch the main checkout is on, else origin/main
+    local hub_branch
+    hub_branch=$(git -C "$main" rev-parse --abbrev-ref HEAD 2>/dev/null)
+    if [[ -n "$hub_branch" && "$hub_branch" != "HEAD" ]]; then
+        base="${2:-origin/$hub_branch}"
+    else
+        base="${2:-origin/main}"
+    fi
 
     # no args → pick an existing worktree via fzf
     if [ -z "$branch" ]; then
